@@ -11,28 +11,29 @@
         <header class="terminal-header">
             <div class="terminal-window">
                 <div class="terminal-output" id="terminal-output"></div>
-                    <div class="terminal-input-line">
-                        <span class="prompt">[root@FiSi]$ </span>
-                            <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" autofocus>
-                        </div>
-                    </div>
-                <div class="terminal-subtitle">
-                    Fachinformatiker Systemintegration - Eignungstest Simulator v1.0
+                <div class="terminal-input-line">
+                    <span class="prompt">[root@FiSi]$ </span>
+                    <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" autofocus>
+                </div>
+            </div>
+            <div class="terminal-subtitle">
+                Fachinformatiker Systemintegration - Eignungstest Simulator v1.0
             </div>
         </header>
+
         <nav class="navigation">
-            <a href="index.html" class="active">Quiz 1-5</a>
-            <a href="quiz2.html">Quiz 6-10</a>
-            <a href="quiz3.html">Quiz 11-15</a>
-            <a href="quiz4.html">Quiz 16-20</a>
-            <a href="quiz5.html">Quiz 21-25</a>
+            <a href="index.html" class="active">Quiz 1-15</a>
+            <a href="quiz2.html">Quiz 16-30</a>
+            <a href="quiz3.html">Quiz 31-45</a>
+            <a href="quiz4.html">Quiz 46-60</a>
+            <a href="quiz5.html">Quiz 61-75</a>
         </nav>
 
         <main class="quiz-container">
             <!-- Frage 1: Multiple Choice - IT-Fachwissen -->
             <div class="question-box" data-question="1">
                 <div class="question-header">
-                    <span class="question-number">[Frage 1/25]</span>
+                    <span class="question-number">[Frage 1/15]</span>
                     <span class="question-type">Multiple Choice - IT-Fachwissen</span>
                 </div>
                 <div class="question-text">
@@ -64,7 +65,7 @@
             <!-- Frage 2: Zahlenreihe vervollständigen -->
             <div class="question-box" data-question="2">
                 <div class="question-header">
-                    <span class="question-number">[Frage 2/25]</span>
+                    <span class="question-number">[Frage 2/15]</span>
                     <span class="question-type">Logisches Denken - Zahlenreihe</span>
                 </div>
                 <div class="question-text">
@@ -81,7 +82,7 @@
             <!-- Frage 3: Grundrechenarten / Dreisatz -->
             <div class="question-box" data-question="3">
                 <div class="question-header">
-                    <span class="question-number">[Frage 3/25]</span>
+                    <span class="question-number">[Frage 3/15]</span>
                     <span class="question-type">Mathematik - Dreisatz</span>
                 </div>
                 <div class="question-text">
@@ -98,7 +99,7 @@
             <!-- Frage 4: Eigenwissen - Fachbegriff -->
             <div class="question-box" data-question="4">
                 <div class="question-header">
-                    <span class="question-number">[Frage 4/25]</span>
+                    <span class="question-number">[Frage 4/15]</span>
                     <span class="question-type">Eigenwissen - IT-Terminologie</span>
                 </div>
                 <div class="question-text">
@@ -115,7 +116,7 @@
             <!-- Frage 5: Englisch C2 - Technical Reading -->
             <div class="question-box" data-question="5">
                 <div class="question-header">
-                    <span class="question-number">[Frage 5/25]</span>
+                    <span class="question-number">[Frage 5/15]</span>
                     <span class="question-type">Englisch C2 - Technical Comprehension</span>
                 </div>
                 <div class="question-text">
@@ -147,12 +148,272 @@
                 <div class="feedback" id="feedback-5"></div>
             </div>
 
+            <!-- Frage 6: IT-Sicherheit -->
+            <div class="question-box" data-question="6">
+                <div class="question-header">
+                    <span class="question-number">[Frage 6/15]</span>
+                    <span class="question-type">Multiple Choice - IT-Sicherheit</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Wählen Sie die korrekte Antwort aus.</p>
+                    <p class="question-content">Welche Aussage zu Firewall-Typen ist korrekt?</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q6" value="a">
+                        <span class="answer-text">A) Eine Paketfilter-Firewall analysiert den Inhalt von Datenpaketen</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q6" value="b" data-correct="true">
+                        <span class="answer-text">B) Eine Stateful Inspection Firewall überwacht den Verbindungsstatus und merkt sich bestehende Verbindungen</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q6" value="c">
+                        <span class="answer-text">C) Personal Firewalls schützen ausschließlich Unternehmensnetzwerke</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q6" value="d">
+                        <span class="answer-text">D) Firewalls können Viren in E-Mails automatisch entfernen</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(6)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-6"></div>
+            </div>
+
+            <!-- Frage 7: Binärsystem -->
+            <div class="question-box" data-question="7">
+                <div class="question-header">
+                    <span class="question-number">[Frage 7/15]</span>
+                    <span class="question-type">Mathematik - Binärsystem</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Rechnen Sie die Binärzahl in eine Dezimalzahl um.</p>
+                    <p class="question-content">Welche Dezimalzahl entspricht der Binärzahl 11010110?</p>
+                </div>
+                <div class="answers">
+                    <input type="number" id="q7-input" class="text-input" placeholder="Dezimalzahl eingeben">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(7)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-7"></div>
+            </div>
+
+            <!-- Frage 8: Prozentrechnung -->
+            <div class="question-box" data-question="8">
+                <div class="question-header">
+                    <span class="question-number">[Frage 8/15]</span>
+                    <span class="question-type">Mathematik - Prozentrechnung</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Berechnen Sie den Prozentwert.</p>
+                    <p class="question-content">Ein Unternehmen kauft 200 Laptops für insgesamt 120.000 €. Bei einer Großbestellung erhält es 15% Rabatt. Wie viel Euro spart das Unternehmen?</p>
+                </div>
+                <div class="answers">
+                    <input type="number" id="q8-input" class="text-input" placeholder="Ersparnis in Euro">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(8)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-8"></div>
+            </div>
+
+            <!-- Frage 9: Netzwerktechnik -->
+            <div class="question-box" data-question="9">
+                <div class="question-header">
+                    <span class="question-number">[Frage 9/15]</span>
+                    <span class="question-type">Multiple Choice - Netzwerktechnik</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Wählen Sie die korrekte Antwort aus.</p>
+                    <p class="question-content">Welche IP-Adresse gehört zum privaten Adressbereich nach RFC 1918?</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q9" value="a">
+                        <span class="answer-text">A) 172.15.10.5</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q9" value="b" data-correct="true">
+                        <span class="answer-text">B) 192.168.1.100</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q9" value="c">
+                        <span class="answer-text">C) 172.32.50.1</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q9" value="d">
+                        <span class="answer-text">D) 11.0.0.1</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(9)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-9"></div>
+            </div>
+
+            <!-- Frage 10: Logische Schlussfolgerung -->
+            <div class="question-box" data-question="10">
+                <div class="question-header">
+                    <span class="question-number">[Frage 10/15]</span>
+                    <span class="question-type">Logisches Denken - Schlussfolgerung</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Treffen Sie die logisch richtige Schlussfolgerung.</p>
+                    <p class="question-content">Wenn alle Server im Rechenzentrum redundant sind und Server A im Rechenzentrum steht, was folgt daraus?</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q10" value="a">
+                        <span class="answer-text">A) Server A ist der wichtigste Server</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q10" value="b" data-correct="true">
+                        <span class="answer-text">B) Server A ist redundant</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q10" value="c">
+                        <span class="answer-text">C) Server A hat keine Backup-Lösung</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q10" value="d">
+                        <span class="answer-text">D) Alle anderen Server sind nicht redundant</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(10)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-10"></div>
+            </div>
+
+            <!-- Frage 11: Deutsch - Rechtschreibung -->
+            <div class="question-box" data-question="11">
+                <div class="question-header">
+                    <span class="question-number">[Frage 11/15]</span>
+                    <span class="question-type">Deutsch - Rechtschreibung</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Wählen Sie die korrekte Schreibweise aus.</p>
+                    <p class="question-content">Welches Wort ist korrekt geschrieben?</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q11" value="a">
+                        <span class="answer-text">A) Standart</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q11" value="b" data-correct="true">
+                        <span class="answer-text">B) Standard</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q11" value="c">
+                        <span class="answer-text">C) Standart</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q11" value="d">
+                        <span class="answer-text">D) Standartt</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(11)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-11"></div>
+            </div>
+
+            <!-- Frage 12: Englisch - IT-Vokabular -->
+            <div class="question-box" data-question="12">
+                <div class="question-header">
+                    <span class="question-number">[Frage 12/15]</span>
+                    <span class="question-type">Englisch - IT-Vokabular</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Instruction: Choose the correct translation.</p>
+                    <p class="question-content">What is the English term for "Betriebssystem"?</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q12" value="a">
+                        <span class="answer-text">A) Operation System</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q12" value="b" data-correct="true">
+                        <span class="answer-text">B) Operating System</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q12" value="c">
+                        <span class="answer-text">C) Operational System</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q12" value="d">
+                        <span class="answer-text">D) Operative System</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(12)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-12"></div>
+            </div>
+
+            <!-- Frage 13: Zahlenreihe 2 -->
+            <div class="question-box" data-question="13">
+                <div class="question-header">
+                    <span class="question-number">[Frage 13/15]</span>
+                    <span class="question-type">Logisches Denken - Zahlenreihe</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Erkennen Sie das Muster und vervollständigen Sie die Zahlenreihe.</p>
+                    <p class="question-content">3, 9, 27, 81, ?</p>
+                </div>
+                <div class="answers">
+                    <input type="number" id="q13-input" class="text-input" placeholder="Ihre Antwort eingeben">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(13)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-13"></div>
+            </div>
+
+            <!-- Frage 14: IT-Fachwissen - Datenspeicher -->
+            <div class="question-box" data-question="14">
+                <div class="question-header">
+                    <span class="question-number">[Frage 14/15]</span>
+                    <span class="question-type">Eigenwissen - Speichereinheiten</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Geben Sie die korrekte Anzahl ein.</p>
+                    <p class="question-content">Wie viele Megabyte (MB) sind in einem Gigabyte (GB) enthalten?</p>
+                </div>
+                <div class="answers">
+                    <input type="number" id="q14-input" class="text-input" placeholder="Anzahl in MB">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(14)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-14"></div>
+            </div>
+
+            <!-- Frage 15: IT-Protokolle -->
+            <div class="question-box" data-question="15">
+                <div class="question-header">
+                    <span class="question-number">[Frage 15/15]</span>
+                    <span class="question-type">Multiple Choice - Netzwerkprotokolle</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Wählen Sie die korrekte Antwort aus.</p>
+                    <p class="question-content">Welches Protokoll wird standardmäßig für die sichere Übertragung von Webseiten verwendet?</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q15" value="a">
+                        <span class="answer-text">A) FTP</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q15" value="b">
+                        <span class="answer-text">B) HTTP</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q15" value="c" data-correct="true">
+                        <span class="answer-text">C) HTTPS</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q15" value="d">
+                        <span class="answer-text">D) SMTP</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(15)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-15"></div>
+            </div>
+
             <!-- Ergebnisanzeige -->
             <div class="results-box" id="results">
-                <div class="results-header">Ergebnisübersicht - Quiz 1-5</div>
+                <div class="results-header">Ergebnisübersicht - Quiz 1-15</div>
                 <div class="results-content" id="results-content"></div>
                 <div class="results-actions">
-                    <button class="nav-btn" onclick="location.href='quiz2.html'">Weiter zu Quiz 6-10 →</button>
+                    <button class="nav-btn" onclick="location.href='quiz2.html'">Weiter zu Quiz 16-30 →</button>
                     <button class="reset-btn" onclick="resetQuiz()">Quiz zurücksetzen</button>
                 </div>
             </div>
