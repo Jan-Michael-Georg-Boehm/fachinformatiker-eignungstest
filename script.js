@@ -361,9 +361,9 @@ terminalInput.addEventListener('keydown', (e) => {
         // Zeige Eingabe im Output (verstecke Passwort)
         const inputLine = document.createElement('div');
         if (sudoMode) {
-            inputLine.innerHTML = `<span class="prompt">[sudo] Passwort für root:  </span> `;
+            inputLine.innerHTML = `<span class="prompt">[sudo] Passwort für root: </span> `;
         } else {
-            inputLine.innerHTML = `<span class="prompt">[root@FiSi]$  </span>${input}`;
+            inputLine.innerHTML = `<span class="prompt">[root@FiSi]$ </span> ${input}`;
         }
         terminalOutput.appendChild(inputLine);
         
@@ -421,7 +421,6 @@ window.addEventListener('load', () => {
     const welcomeLine = document.createElement('div');
     welcomeLine.innerHTML = `<span style="color: #0f0;">FISI Eignungstest Terminal v1.0 gestartet</span>
 <span style="color: #888;">Tippe 'help' für verfügbare Befehle</span>
-
 `;
     welcomeLine.style.whiteSpace = 'pre-wrap';
     welcomeLine.style.marginBottom = '10px';
