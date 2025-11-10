@@ -773,3 +773,22 @@ body {
     background: #0f0;
     color: #000;
 }
+
+/* Kreise für Mustererkennung */
+.circle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 3px;
+    border: 2px solid #0f0;
+    vertical-align: middle;
+}
+
+.circle.filled {
+    background-color: #0f0;
+}
+
+.circle.empty {
+    background-color: transparent;
+}

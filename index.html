@@ -396,23 +396,36 @@
                 </div>
                 <div class="question-text">
                     <p class="instruction">Aufgabenstellung: Erkennen Sie das Muster und wählen Sie das fehlende Element aus.</p>
-                    <p class="question-content" style="font-size: 1.3em; text-align: center; line-height: 2; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 10px; margin: 20px 0;">
-                        <span style="display: inline-block; padding: 15px; border: 2px solid #0f0; border-radius: 5px; margin: 5px;">
-                            ● ○ ○
-                        </span>
-                        <span style="display: inline-block; padding: 15px; border: 2px solid #0f0; border-radius: 5px; margin: 5px;">
-                            ● ● ○
-                        </span>
-                        <span style="display: inline-block; padding: 15px; border: 2px solid #0f0; border-radius: 5px; margin: 5px;">
-                            ● ● ●
-                        </span>
-                        <span style="display: inline-block; padding: 15px; border: 2px solid #0f0; border-radius: 5px; margin: 5px;">
-                            ○ ● ●
-                        </span>
-                        <span style="display: inline-block; padding: 15px; border: 2px solid #ff6b6b; border-radius: 5px; margin: 5px; font-size: 1.5em;">
-                            <strong>?</strong>
-                        </span>
-                    </p>
+                    <div style="text-align: center; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 10px; margin: 20px 0;">
+                        <!-- Box 1 -->
+                        <div style="display: inline-block; padding: 15px; border: 2px solid #0f0; border-radius: 5px; margin: 5px;">
+                            <span class="circle filled"></span>
+                            <span class="circle empty"></span>
+                            <span class="circle empty"></span>
+                        </div>
+                        <!-- Box 2 -->
+                        <div style="display: inline-block; padding: 15px; border: 2px solid #0f0; border-radius: 5px; margin: 5px;">
+                            <span class="circle filled"></span>
+                            <span class="circle filled"></span>
+                            <span class="circle empty"></span>
+                        </div>
+                        <!-- Box 3 -->
+                        <div style="display: inline-block; padding: 15px; border: 2px solid #0f0; border-radius: 5px; margin: 5px;">
+                            <span class="circle filled"></span>
+                            <span class="circle filled"></span>
+                            <span class="circle filled"></span>
+                        </div>
+                        <!-- Box 4 -->
+                        <div style="display: inline-block; padding: 15px; border: 2px solid #0f0; border-radius: 5px; margin: 5px;">
+                            <span class="circle empty"></span>
+                            <span class="circle filled"></span>
+                            <span class="circle filled"></span>
+                        </div>
+                        <!-- Box 5 - Fragezeichen -->
+                        <div style="display: inline-block; padding: 15px; border: 2px solid #ff6b6b; border-radius: 5px; margin: 5px;">
+                            <span style="font-size: 1.5em; font-weight: bold; color: #ff6b6b;">?</span>
+                        </div>
+                    </div>
                     <p class="hint" style="color: #888; font-size: 0.9em; margin-top: 10px;">
                         💡 Tipp: Die Kreise füllen sich von links nach rechts, dann leeren sie sich von links nach rechts.
                     </p>
@@ -422,7 +435,9 @@
                         <input type="radio" name="q13" value="a" data-correct="true">
                         <span class="answer-text">
                             <span style="display: inline-block; padding: 10px; border: 2px solid #444; border-radius: 5px; margin-left: 10px;">
-                                ○ ○ ●
+                                <span class="circle empty"></span>
+                                <span class="circle empty"></span>
+                                <span class="circle filled"></span>
                             </span>
                         </span>
                     </label>
@@ -430,7 +445,9 @@
                         <input type="radio" name="q13" value="b">
                         <span class="answer-text">
                             <span style="display: inline-block; padding: 10px; border: 2px solid #444; border-radius: 5px; margin-left: 10px;">
-                                ○ ○ ○
+                                <span class="circle empty"></span>
+                                <span class="circle empty"></span>
+                                <span class="circle empty"></span>
                             </span>
                         </span>
                     </label>
@@ -438,7 +455,9 @@
                         <input type="radio" name="q13" value="c">
                         <span class="answer-text">
                             <span style="display: inline-block; padding: 10px; border: 2px solid #444; border-radius: 5px; margin-left: 10px;">
-                                ● ○ ○
+                                <span class="circle filled"></span>
+                                <span class="circle empty"></span>
+                                <span class="circle empty"></span>
                             </span>
                         </span>
                     </label>
@@ -446,7 +465,9 @@
                         <input type="radio" name="q13" value="d">
                         <span class="answer-text">
                             <span style="display: inline-block; padding: 10px; border: 2px solid #444; border-radius: 5px; margin-left: 10px;">
-                                ○ ● ○
+                                <span class="circle empty"></span>
+                                <span class="circle filled"></span>
+                                <span class="circle empty"></span>
                             </span>
                         </span>
                     </label>
@@ -454,6 +475,7 @@
                 <button class="check-btn" onclick="checkAnswer(13)">Antwort überprüfen</button>
                 <div class="feedback" id="feedback-13"></div>
             </div>
+
 
             <!-- Frage 14: IT-Fachwissen - Datenspeicher -->
             <div class="question-box" data-question="14">
