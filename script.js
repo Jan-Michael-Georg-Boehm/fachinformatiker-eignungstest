@@ -60,23 +60,21 @@ function checkAnswer(questionNum) {
     switch(answer.type) {
         case 'multiple-text':
             // Prüfe alle drei Analogien
-            const inputs = [
+            const textInputs = [
                 document.getElementById(`q${questionNum}-input-1`),
                 document.getElementById(`q${questionNum}-input-2`),
                 document.getElementById(`q${questionNum}-input-3`)
             ];
             
-            // Prüfe ob alle ausgefüllt sind
-            if (inputs.some(input => !input || !input.value.trim())) {
+            if (textInputs.some(input => !input || !input.value.trim())) {
                 alert('Bitte beantworte alle drei Analogien!');
                 return;
             }
             
-            // Prüfe jede Antwort
-            let correctCount = 0;
-            const results = [];
+            let textCorrectCount = 0;
+            const textResults = [];
             
-            inputs.forEach((input, index) => {
+            textInputs.forEach((input, index) => {
                 const userAns = input.value.toLowerCase().trim();
                 const correctAnswers = answer.correct[index];
                 const isAnswerCorrect = correctAnswers.some(correct => 
@@ -85,14 +83,14 @@ function checkAnswer(questionNum) {
                 );
                 
                 if (isAnswerCorrect) {
-                    correctCount++;
-                    results.push(`✓ Analogie ${index + 1}: Richtig`);
+                    textCorrectCount++;
+                    textResults.push(`✓ Analogie ${index + 1}: Richtig`);
                 } else {
-                    results.push(`✗ Analogie ${index + 1}: Falsch`);
+                    textResults.push(`✗ Analogie ${index + 1}: Falsch`);
                 }
             });
             
-            isCorrect = (correctCount === 3);
+            isCorrect = (textCorrectCount === 3);
             
             if (isCorrect) {
                 feedbackEl.className = 'feedback correct';
@@ -103,11 +101,60 @@ function checkAnswer(questionNum) {
             } else {
                 feedbackEl.className = 'feedback incorrect';
                 feedbackEl.innerHTML = `
-                    ✗ ${correctCount} von 3 richtig<br>
-                    ${results.join('<br>')}
+                    ✗ ${textCorrectCount} von 3 richtig<br>
+                    ${textResults.join('<br>')}
                     <br><span style="color: #888; font-size: 0.9em;">Versuche es nochmal oder nutze 'sudo answer' im Terminal.</span>
                 `;
-                return; // Nicht als beantwortet zählen, damit Nutzer es nochmal versuchen kann
+                return;
+            }
+            break;
+
+        case 'multiple-number':
+            // Prüfe alle vier Zahlenreihen
+            const numberInputs = [
+                document.getElementById(`q${questionNum}-input-1`),
+                document.getElementById(`q${questionNum}-input-2`),
+                document.getElementById(`q${questionNum}-input-3`),
+                document.getElementById(`q${questionNum}-input-4`)
+            ];
+            
+            if (numberInputs.some(input => !input || !input.value)) {
+                alert('Bitte beantworte alle vier Zahlenreihen!');
+                return;
+            }
+            
+            let numberCorrectCount = 0;
+            const numberResults = [];
+            
+            numberInputs.forEach((input, index) => {
+                const userNum = parseFloat(input.value);
+                const correctAnswer = answer.correct[index];
+                const isAnswerCorrect = (userNum === correctAnswer);
+                
+                if (isAnswerCorrect) {
+                    numberCorrectCount++;
+                    numberResults.push(`✓ Reihe ${index + 1}: Richtig`);
+                } else {
+                    numberResults.push(`✗ Reihe ${index + 1}: Falsch`);
+                }
+            });
+            
+            isCorrect = (numberCorrectCount === 4);
+            
+            if (isCorrect) {
+                feedbackEl.className = 'feedback correct';
+                feedbackEl.innerHTML = `
+                    ✓ Alle Zahlenreihen richtig!<br>
+                    <span style="color: #aaa; font-size: 0.9em; white-space: pre-line;">${answer.explanation}</span>
+                `;
+            } else {
+                feedbackEl.className = 'feedback incorrect';
+                feedbackEl.innerHTML = `
+                    ✗ ${numberCorrectCount} von 4 richtig<br>
+                    ${numberResults.join('<br>')}
+                    <br><span style="color: #888; font-size: 0.9em;">Versuche es nochmal oder nutze 'sudo answer' im Terminal.</span>
+                `;
+                return;
             }
             break;
             
@@ -119,6 +166,14 @@ function checkAnswer(questionNum) {
             }
             userAnswer = selectedRadio.value;
             isCorrect = (userAnswer === answer.correct);
+            
+            if (isCorrect) {
+                feedbackEl.className = 'feedback correct';
+                feedbackEl.innerHTML = `✓ Richtig! ${answer.explanation || ''}`;
+            } else {
+                feedbackEl.className = 'feedback incorrect';
+                feedbackEl.innerHTML = `✗ Leider falsch. Versuche es nochmal oder nutze 'sudo answer' im Terminal. 😉`;
+            }
             break;
 
         case 'number':
@@ -129,6 +184,14 @@ function checkAnswer(questionNum) {
             }
             userAnswer = parseFloat(numberInput.value);
             isCorrect = (userAnswer === answer.correct);
+            
+            if (isCorrect) {
+                feedbackEl.className = 'feedback correct';
+                feedbackEl.innerHTML = `✓ Richtig! ${answer.explanation || ''}`;
+            } else {
+                feedbackEl.className = 'feedback incorrect';
+                feedbackEl.innerHTML = `✗ Leider falsch. Versuche es nochmal oder nutze 'sudo answer' im Terminal. 😉`;
+            }
             break;
 
         case 'text':
@@ -142,71 +205,20 @@ function checkAnswer(questionNum) {
                 userAnswer === correct.toLowerCase() || 
                 userAnswer.includes(correct.toLowerCase())
             );
-            break;
-
-        case 'multiple-number':
-        // Prüfe alle vier Zahlenreihen
-        const numberInputs = [
-            document.getElementById(`q${questionNum}-input-1`),
-            document.getElementById(`q${questionNum}-input-2`),
-            document.getElementById(`q${questionNum}-input-3`),
-            document.getElementById(`q${questionNum}-input-4`)
-        ];
-        
-        // Prüfe ob alle ausgefüllt sind
-        if (numberInputs.some(input => !input || !input.value)) {
-            alert('Bitte beantworte alle vier Zahlenreihen!');
-            return;
-        }
-        
-        numberInputs.forEach((input, index) => {
-            const userNum = parseFloat(input.value);
-            const correctAnswer = answer.correct[index];
-            const isAnswerCorrect = (userNum === correctAnswer);
             
-            if (isAnswerCorrect) {
-                correctCount++;
-                results.push(`✓ Reihe ${index + 1}: Richtig`);
+            if (isCorrect) {
+                feedbackEl.className = 'feedback correct';
+                feedbackEl.innerHTML = `✓ Richtig! ${answer.explanation || ''}`;
             } else {
-                results.push(`✗ Reihe ${index + 1}: Falsch`);
+                feedbackEl.className = 'feedback incorrect';
+                feedbackEl.innerHTML = `✗ Leider falsch. Versuche es nochmal oder nutze 'sudo answer' im Terminal. 😉`;
             }
-        });
-        
-        isCorrect = (correctCount === 4);
-        
-        if (isCorrect) {
-            feedbackEl.className = 'feedback correct';
-            feedbackEl.innerHTML = `
-                ✓ Alle Zahlenreihen richtig!<br>
-                <span style="color: #aaa; font-size: 0.9em; white-space: pre-line;">${answer.explanation}</span>
-            `;
-        } else {
-            feedbackEl.className = 'feedback incorrect';
-            feedbackEl.innerHTML = `
-                ✗ ${correctCount} von 4 richtig<br>
-                ${results.join('<br>')}
-                <br><span style="color: #888; font-size: 0.9em;">Versuche es nochmal oder nutze 'sudo answer' im Terminal.</span>
-            `;
-            return; // Nicht als beantwortet zählen
-        }
-        break;
+            break;
     }
 
-    // Feedback für normale Fragen
-    if (answer.type !== 'multiple-text') {
-        if (isCorrect) {
-            feedbackEl.className = 'feedback correct';
-            feedbackEl.innerHTML = `✓ Richtig! ${answer.explanation || ''}`;
-            quizStats.correct++;
-        } else {
-            feedbackEl.className = 'feedback incorrect';
-            feedbackEl.innerHTML = `✗ Leider falsch. Versuche es nochmal oder nutze 'sudo answer' im Terminal. 😉`;
-        }
-    } else if (isCorrect) {
-        quizStats.correct++;
-    }
-
+    // Nur bei richtigen Antworten weitermachen
     if (isCorrect) {
+        quizStats.correct++;
         quizStats.answered++;
         
         // Button deaktivieren
@@ -214,11 +226,11 @@ function checkAnswer(questionNum) {
         button.disabled = true;
         button.style.opacity = '0.5';
         button.style.cursor = 'not-allowed';
-    }
-
-    // Prüfen, ob alle Fragen beantwortet wurden
-    if (quizStats.answered === quizStats.total) {
-        showResults();
+        
+        // Prüfen, ob alle Fragen beantwortet wurden
+        if (quizStats.answered === quizStats.total) {
+            showResults();
+        }
     }
 }
 
