@@ -361,9 +361,9 @@ terminalInput.addEventListener('keydown', (e) => {
         // Zeige Eingabe im Output (verstecke Passwort)
         const inputLine = document.createElement('div');
         if (sudoMode) {
-            inputLine.innerHTML = `<span class="prompt">[sudo] Passwort für root:</span> `;
+            inputLine.innerHTML = `<span class="prompt">[sudo] Passwort für root:  </span> `;
         } else {
-            inputLine.innerHTML = `<span class="prompt">[root@FiSi]$ </span>${input}`;
+            inputLine.innerHTML = `<span class="prompt">[root@FiSi]$  </span>${input}`;
         }
         terminalOutput.appendChild(inputLine);
         
