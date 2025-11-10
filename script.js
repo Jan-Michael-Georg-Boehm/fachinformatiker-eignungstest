@@ -27,7 +27,11 @@ const answers = {
     10: { type: 'radio', correct: 'b', explanation: 'Logische Schlussfolgerung: Wenn alle Server redundant sind → Server A ist redundant' },
     11: { type: 'radio', correct: 'b', explanation: 'Standard (mit d, nicht t)' },
     12: { type: 'radio', correct: 'b', explanation: 'Operating System (nicht Operation System)' },
-    13: { type: 'number', correct: 243, explanation: 'Muster: ×3 → 81 × 3 = 243' },
+    13: { 
+        type: 'radio', 
+        correct: 'b', 
+        explanation: 'Muster: Die gefüllten Kreise (●) rotieren von links nach rechts und verschwinden dann. Nächster Schritt: Alle Kreise sind leer (○ ○ ○).' 
+    },
     14: { type: 'number', correct: 1024, explanation: '1 GB = 1024 MB' },
     15: { type: 'radio', correct: 'c', explanation: 'HTTPS (HTTP Secure) für sichere Webseiten-Übertragung' },
     16: { 
