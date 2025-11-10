@@ -224,3 +224,111 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Terminal-Navigation
+const terminalInput = document.getElementById('terminal-input');
+const terminalOutput = document.getElementById('terminal-output');
+const commandHistory = [];
+let historyIndex = -1;
+
+const commands = {
+    'ls': () => {
+        return 'quiz1.html  quiz2.html  quiz3.html  quiz4.html  quiz5.html';
+    },
+    'help': () => {
+        return `Verfügbare Befehle:
+  help     - Zeigt diese Hilfe an
+  ls       - Zeigt alle Quiz-Seiten
+  cd quiz1 - Öffnet Quiz 1-5
+  cd quiz2 - Öffnet Quiz 6-10
+  cd quiz3 - Öffnet Quiz 11-15
+  cd quiz4 - Öffnet Quiz 16-20
+  cd quiz5 - Öffnet Quiz 21-25
+  clear    - Löscht das Terminal`;
+    },
+    'cd': (args) => {
+        const pages = {
+            'quiz1': 'index.html',
+            'quiz2': 'quiz2.html',
+            'quiz3': 'quiz3.html',
+            'quiz4': 'quiz4.html',
+            'quiz5': 'quiz5.html'
+        };
+        
+        if (args[0] && pages[args[0]]) {
+            window.location.href = pages[args[0]];
+            return `Navigiere zu ${args[0]}...`;
+        } else {
+            return `cd: ${args[0]}: Kein gültiges Quiz gefunden. Nutze 'ls' für verfügbare Seiten.`;
+        }
+    },
+    'clear': () => {
+        terminalOutput.innerHTML = '';
+        return '';
+    }
+};
+
+function executeCommand(input) {
+    const parts = input.trim().split(' ');
+    const command = parts[0].toLowerCase();
+    const args = parts.slice(1);
+    
+    if (commands[command]) {
+        return commands[command](args);
+    } else {
+        return `bash: ${command}: Befehl nicht gefunden. Nutze 'help' für Hilfe.`;
+    }
+}
+
+terminalInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        const input = terminalInput.value;
+        
+        // Zeige Eingabe im Output
+        const inputLine = document.createElement('div');
+        inputLine.innerHTML = `<span class="prompt">[root@FiSi]$ </span>${input}`;
+        terminalOutput.appendChild(inputLine);
+        
+        // Führe Befehl aus
+        if (input.trim()) {
+            commandHistory.push(input);
+            historyIndex = commandHistory.length;
+            
+            const output = executeCommand(input);
+            if (output) {
+                const outputLine = document.createElement('div');
+                outputLine.style.whiteSpace = 'pre-wrap';
+                outputLine.textContent = output;
+                terminalOutput.appendChild(outputLine);
+            }
+        }
+        
+        terminalInput.value = '';
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    }
+    
+    // Pfeiltaste hoch/runter für History
+    if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (historyIndex > 0) {
+            historyIndex--;
+            terminalInput.value = commandHistory[historyIndex];
+        }
+    } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (historyIndex < commandHistory.length - 1) {
+            historyIndex++;
+            terminalInput.value = commandHistory[historyIndex];
+        } else {
+            historyIndex = commandHistory.length;
+            terminalInput.value = '';
+        }
+    }
+});
+
+// Fokus zurück ins Terminal bei Klick
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.terminal-window')) {
+        terminalInput.focus();
+    }
+});

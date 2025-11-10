@@ -737,3 +737,39 @@ body {
     60% { transform: translate(-2px, -2px); }
     80% { transform: translate(2px, 2px); }
 }
+
+.terminal-window {
+    background: #1e1e1e;
+    border: 2px solid #0f0;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: 'Courier New', monospace;
+}
+
+.terminal-output {
+    max-height: 150px;
+    overflow-y: auto;
+    margin-bottom: 5px;
+    color: #0f0;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+}
+
+.terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    outline: none;
+}
+
+.terminal-input::selection {
+    background: #0f0;
+    color: #000;
+}

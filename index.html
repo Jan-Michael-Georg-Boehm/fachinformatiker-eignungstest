@@ -9,14 +9,17 @@
 <body>
     <div class="container">
         <header class="terminal-header">
-            <div class="terminal-title">
-                <span class="prompt">[root]@[FiSi] $ > </span> ./eignungstest_fachinformatiker.sh
-            </div>
-            <div class="terminal-subtitle">
-                Fachinformatiker Systemintegration - Eignungstest Simulator v1.0
+            <div class="terminal-window">
+                <div class="terminal-output" id="terminal-output"></div>
+                    <div class="terminal-input-line">
+                        <span class="prompt">[root@FiSi]$ </span>
+                            <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" autofocus>
+                        </div>
+                    </div>
+                <div class="terminal-subtitle">
+                    Fachinformatiker Systemintegration - Eignungstest Simulator v1.0
             </div>
         </header>
-
         <nav class="navigation">
             <a href="index.html" class="active">Quiz 1-5</a>
             <a href="quiz2.html">Quiz 6-10</a>
