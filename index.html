@@ -407,6 +407,39 @@
                 <button class="check-btn" onclick="checkAnswer(15)">Antwort überprüfen</button>
                 <div class="feedback" id="feedback-15"></div>
             </div>
+            
+            <!-- Frage 16: SCHWIERIGSTE FRAGE - Antwort ist sudo Passwort -->
+            <div class="question-box" data-question="16">
+                <div class="question-header">
+                    <span class="question-number">[Frage 16/16]</span>
+                    <span class="question-type">⚠️ EXPERTENFRAGE - Netzwerktechnik</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Berechnen Sie die korrekte Subnetzmaske.</p>
+                    <p class="question-content">Ein Unternehmen benötigt ein Subnetz mit mindestens 50 nutzbaren Host-Adressen. Welche Subnetzmaske im CIDR-Format (Anzahl der Bits) wird benötigt?</p>
+                    <p class="hint" style="color: #888; font-size: 0.9em; margin-top: 10px;">💡 Hinweis: Die Antwort ist nur die Zahl der Netzwerk-Bits (z.B. 24 für /24). Diese Antwort benötigst du für einen geheimen Terminal-Befehl...</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q16" value="a">
+                        <span class="answer-text">A) /25 (128 Adressen, 126 nutzbar)</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q16" value="b" data-correct="true">
+                        <span class="answer-text">B) /26 (64 Adressen, 62 nutzbar)</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q16" value="c">
+                        <span class="answer-text">C) /27 (32 Adressen, 30 nutzbar)</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q16" value="d">
+                        <span class="answer-text">D) /28 (16 Adressen, 14 nutzbar)</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(16)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-16"></div>
+            </div>
 
             <!-- Ergebnisanzeige -->
             <div class="results-box" id="results">
