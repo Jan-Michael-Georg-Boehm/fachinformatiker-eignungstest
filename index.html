@@ -30,37 +30,50 @@
         </nav>
 
         <main class="quiz-container">
-            <!-- Frage 1: Multiple Choice - IT-Fachwissen -->
+            <!-- Frage 1: Analogien - Wortzusammenhänge (Mehrfach) -->
             <div class="question-box" data-question="1">
                 <div class="question-header">
-                    <span class="question-number">[Frage 1/15]</span>
-                    <span class="question-type">Multiple Choice - IT-Fachwissen</span>
+                    <span class="question-number">[Frage 1/16]</span>
+                    <span class="question-type">Logisches Denken - Wortzusammenhänge</span>
                 </div>
                 <div class="question-text">
-                    <p class="instruction">Aufgabenstellung: Wählen Sie die korrekte Antwort aus.</p>
-                    <p class="question-content">Welche Aussage über das OSI-Schichtenmodell ist korrekt?</p>
+                    <p class="instruction">Aufgabenstellung: Erkennen Sie die Zusammenhänge und vervollständigen Sie alle drei Analogien.</p>
+                    <p class="hint" style="color: #888; font-size: 0.9em; margin-bottom: 15px;">
+                        💡 Tipp: Überlege, welche logische Beziehung zwischen den Begriffen besteht.
+                    </p>
                 </div>
+                
                 <div class="answers">
-                    <label class="answer-option">
-                        <input type="radio" name="q1" value="a">
-                        <span class="answer-text">A) Das OSI-Modell besteht aus 5 Schichten</span>
-                    </label>
-                    <label class="answer-option">
-                        <input type="radio" name="q1" value="b">
-                        <span class="answer-text">B) Die Transportschicht ist für die Routing-Funktionen zuständig</span>
-                    </label>
-                    <label class="answer-option">
-                        <input type="radio" name="q1" value="c" data-correct="true">
-                        <span class="answer-text">C) Die Vermittlungsschicht (Layer 3) ist für die logische Adressierung und das Routing zuständig</span>
-                    </label>
-                    <label class="answer-option">
-                        <input type="radio" name="q1" value="d">
-                        <span class="answer-text">D) Die Anwendungsschicht arbeitet direkt mit elektrischen Signalen</span>
-                    </label>
+                    <!-- Analogie 1 -->
+                    <div style="margin-bottom: 25px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 5px;">
+                        <p style="font-size: 1.1em; margin-bottom: 10px;">
+                            <strong>Haus</strong> → <strong>Garten</strong> | <strong>Computer</strong> → <strong>?</strong>
+                        </p>
+                        <input type="text" id="q1-input-1" class="text-input" placeholder="Antwort 1 eingeben" style="width: 100%;">
+                    </div>
+                    
+                    <!-- Analogie 2 -->
+                    <div style="margin-bottom: 25px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 5px;">
+                        <p style="font-size: 1.1em; margin-bottom: 10px;">
+                            <strong>Buch</strong> → <strong>Bibliothek</strong> | <strong>Datei</strong> → <strong>?</strong>
+                        </p>
+                        <input type="text" id="q1-input-2" class="text-input" placeholder="Antwort 2 eingeben" style="width: 100%;">
+                    </div>
+                    
+                    <!-- Analogie 3 -->
+                    <div style="margin-bottom: 15px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 5px;">
+                        <p style="font-size: 1.1em; margin-bottom: 10px;">
+                            <strong>Straße</strong> → <strong>Auto</strong> | <strong>Kabel</strong> → <strong>?</strong>
+                        </p>
+                        <input type="text" id="q1-input-3" class="text-input" placeholder="Antwort 3 eingeben" style="width: 100%;">
+                    </div>
                 </div>
+                
                 <button class="check-btn" onclick="checkAnswer(1)">Antwort überprüfen</button>
                 <div class="feedback" id="feedback-1"></div>
             </div>
+
+
 
             <!-- Frage 2: Zahlenreihe vervollständigen -->
             <div class="question-box" data-question="2">

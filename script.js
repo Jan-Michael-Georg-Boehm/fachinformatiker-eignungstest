@@ -4,7 +4,14 @@
 
 // EINHEITLICHES Antwort-System
 const answers = {
-    1: { type: 'radio', correct: 'c', explanation: 'Die Vermittlungsschicht (Layer 3) ist für logische Adressierung und Routing zuständig.' },
+     1: { 
+        type: 'multiple-text', 
+        correct: [
+            ['netzwerk', 'netz', 'netzwerke'],           // Antwort 1
+            ['ordner', 'verzeichnis', 'datenbank'],      // Antwort 2
+            ['daten', 'signal', 'signale', 'strom']      // Antwort 3 
+        ], explanation: `1. Haus → Garten (umgibt) | Computer → Netzwerk (verbindet) 2. Buch → Bibliothek (Sammlung) | Datei → Ordner/Verzeichnis (Sammlung) 3. Straße → Auto (Transport) | Kabel → Daten/Signal (Transport)` 
+    },
     2: { type: 'number', correct: 42, explanation: 'Muster: +4, +6, +8, +10, +12 → 30 + 12 = 42' },
     3: { type: 'number', correct: 3600, explanation: '450 Anfragen / 15 Min = 30 Anfragen/Min → 120 Min × 30 = 3600 Anfragen' },
     4: { type: 'text', correct: ['mac', 'mac-adresse', 'macadresse', 'mac adresse'], explanation: 'MAC-Adresse (Media Access Control Address)' },
@@ -46,8 +53,60 @@ function checkAnswer(questionNum) {
     let isCorrect = false;
     let userAnswer = null;
 
-    // Je nach Antworttyp unterschiedlich prüfen
     switch(answer.type) {
+        case 'multiple-text':
+            // Prüfe alle drei Analogien
+            const inputs = [
+                document.getElementById(`q${questionNum}-input-1`),
+                document.getElementById(`q${questionNum}-input-2`),
+                document.getElementById(`q${questionNum}-input-3`)
+            ];
+            
+            // Prüfe ob alle ausgefüllt sind
+            if (inputs.some(input => !input || !input.value.trim())) {
+                alert('Bitte beantworte alle drei Analogien!');
+                return;
+            }
+            
+            // Prüfe jede Antwort
+            let correctCount = 0;
+            const results = [];
+            
+            inputs.forEach((input, index) => {
+                const userAns = input.value.toLowerCase().trim();
+                const correctAnswers = answer.correct[index];
+                const isAnswerCorrect = correctAnswers.some(correct => 
+                    userAns === correct.toLowerCase() || 
+                    userAns.includes(correct.toLowerCase())
+                );
+                
+                if (isAnswerCorrect) {
+                    correctCount++;
+                    results.push(`✓ Analogie ${index + 1}: Richtig`);
+                } else {
+                    results.push(`✗ Analogie ${index + 1}: Falsch`);
+                }
+            });
+            
+            isCorrect = (correctCount === 3);
+            
+            if (isCorrect) {
+                feedbackEl.className = 'feedback correct';
+                feedbackEl.innerHTML = `
+                    ✓ Alle Analogien richtig!<br>
+                    <span style="color: #aaa; font-size: 0.9em; white-space: pre-line;">${answer.explanation}</span>
+                `;
+            } else {
+                feedbackEl.className = 'feedback incorrect';
+                feedbackEl.innerHTML = `
+                    ✗ ${correctCount} von 3 richtig<br>
+                    ${results.join('<br>')}
+                    <br><span style="color: #888; font-size: 0.9em;">Versuche es nochmal oder nutze 'sudo answer' im Terminal.</span>
+                `;
+                return; // Nicht als beantwortet zählen, damit Nutzer es nochmal versuchen kann
+            }
+            break;
+            
         case 'radio':
             const selectedRadio = document.querySelector(`input[name="q${questionNum}"]:checked`);
             if (!selectedRadio) {
@@ -82,35 +141,36 @@ function checkAnswer(questionNum) {
             break;
     }
 
-    // Feedback anzeigen
-    if (isCorrect) {
-        feedbackEl.className = 'feedback correct';
-        feedbackEl.innerHTML = `✓ Richtig! ${answer.explanation || ''}`;
+    // Feedback für normale Fragen
+    if (answer.type !== 'multiple-text') {
+        if (isCorrect) {
+            feedbackEl.className = 'feedback correct';
+            feedbackEl.innerHTML = `✓ Richtig! ${answer.explanation || ''}`;
+            quizStats.correct++;
+        } else {
+            feedbackEl.className = 'feedback incorrect';
+            feedbackEl.innerHTML = `✗ Leider falsch. Versuche es nochmal oder nutze 'sudo answer' im Terminal. 😉`;
+        }
+    } else if (isCorrect) {
         quizStats.correct++;
+    }
+
+    if (isCorrect) {
         quizStats.answered++;
         
-        // Button deaktivieren bei richtiger Antwort
+        // Button deaktivieren
         const button = feedbackEl.previousElementSibling;
         button.disabled = true;
         button.style.opacity = '0.5';
         button.style.cursor = 'not-allowed';
-        
-    } else {
-        feedbackEl.className = 'feedback incorrect';
-        feedbackEl.innerHTML = `
-            ✗ Leider falsch. 
-            <button onclick="retryQuestion(${questionNum})" style="margin-left: 10px; padding: 5px 10px; background: #ff6b6b; border: none; border-radius: 3px; color: white; cursor: pointer;">
-                Nochmal versuchen
-            </button>
-        `;
-        // Bei falscher Antwort NICHT als beantwortet zählen
     }
 
-    // Prüfen, ob alle Fragen RICHTIG beantwortet wurden
+    // Prüfen, ob alle Fragen beantwortet wurden
     if (quizStats.answered === quizStats.total) {
         showResults();
     }
 }
+
 
 // Neue Funktion zum Zurücksetzen einer einzelnen Frage
 function retryQuestion(questionNum) {
@@ -258,7 +318,14 @@ function displayAllAnswers() {
     
     for (let i = 1; i <= 16; i++) {
         const ans = answers[i];
-        const answerText = Array.isArray(ans.correct) ? ans.correct[0] : ans.correct;
+        let answerText = '';
+        
+        if (ans.type === 'multiple-text') {
+            answerText = `1: ${ans.correct[0][0]} | 2: ${ans.correct[1][0]} | 3: ${ans.correct[2][0]}`;
+        } else {
+            answerText = Array.isArray(ans.correct) ? ans.correct[0] : ans.correct;
+        }
+        
         output += `─────────────────────────────────────────────────────────────────
 [Frage ${i}]
 ✓ Korrekte Antwort: ${answerText.toString().toUpperCase()}
@@ -274,6 +341,7 @@ function displayAllAnswers() {
     
     return output;
 }
+
 
 function executeCommand(input) {
     // Sudo-Passwort-Modus - Passwort ist "95"
