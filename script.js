@@ -233,7 +233,7 @@ let historyIndex = -1;
 let sudoMode = false;
 let sudoCommand = '';
 
-// Alle Lösungen für den sudo answer Befehl
+// Alle Lösungen - UPDATE für Frage 16
 const allAnswers = {
     1: { answer: 'C', explanation: 'Die Vermittlungsschicht (Layer 3) ist für logische Adressierung und Routing zuständig.' },
     2: { answer: '42', explanation: 'Muster: +4, +6, +8, +10, +12 → 30 + 12 = 42' },
@@ -249,8 +249,52 @@ const allAnswers = {
     12: { answer: 'B', explanation: 'Operating System (nicht Operation System)' },
     13: { answer: '243', explanation: 'Muster: ×3 → 81 × 3 = 243' },
     14: { answer: '1024', explanation: '1 GB = 1024 MB' },
-    15: { answer: 'C', explanation: 'HTTPS (HTTP Secure) für sichere Webseiten-Übertragung' }
+    15: { answer: 'C', explanation: 'HTTPS (HTTP Secure) für sichere Webseiten-Übertragung' },
+    16: { 
+        answer: '95', 
+        explanation: `Schritt-für-Schritt Lösung:
+
+        1. Bits für 8 Subnetze: 2^3 = 8 → 3 Bits nötig
+        2. Neue Maske: /16 + 3 = /19 (255.255.224.0)
+        3. Schrittweite im 3. Oktett: 256 - 224 = 32
+        4. Die 8 Subnetze:
+        • Subnetz 1: 172.16.0.0/19   (Broadcast: 172.16.31.255)
+        • Subnetz 2: 172.16.32.0/19  (Broadcast: 172.16.63.255)
+        • Subnetz 3: 172.16.64.0/19  (Broadcast: 172.16.95.255) ✓
+        
+        5. Drittes Subnetz: Netz 172.16.64.0 - Broadcast 172.16.95.255
+        6. Das dritte Oktett der Broadcast-Adresse: 95` 
+    }
 };
+
+// In der executeCommand Funktion:
+function executeCommand(input) {
+    if (sudoMode) {
+        sudoMode = false;
+        terminalInput.type = 'text';
+        
+        // Das Passwort ist "95" (das dritte Oktett der Broadcast-Adresse)
+        const correctPassword = '95';
+        
+        if (input === correctPassword) {
+            if (sudoCommand === 'answer') {
+                return displayAllAnswers();
+            }
+        } else {
+            return `sudo: 1 falscher Passwortversuch
+        
+            💡 TIPP: Löse Frage 16 - die Subnetting-Berechnung!
+            Das Passwort ist das dritte Oktett der Broadcast-Adresse.
+            
+            Rechenwerg:
+            1. Wie viele Bits für 8 Subnetze? (2^n ≥ 8)
+            2. Neue Subnetzmaske?
+            3. Schrittweite berechnen (256 - Oktett-Wert)
+            4. Drittes Subnetz finden
+            5. Broadcast = letzte IP vor nächstem Subnetz`;
+        }
+    }
+}
 
 const commands = {
     'ls': () => {
