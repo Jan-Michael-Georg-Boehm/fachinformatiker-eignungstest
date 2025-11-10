@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FISI Eignungstest - Quiz 6-10</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="terminal-header">
+            <div class="terminal-title">
+                <span class="prompt">root@fisi-prep:~$</span> ./eignungstest_vorbereitung.sh --section=2
+            </div>
+            <div class="terminal-subtitle">
+                Fachinformatiker Systemintegration - Quiz 6-10
+            </div>
+        </header>
+
+        <nav class="navigation">
+            <a href="index.html">Quiz 1-5</a>
+            <a href="quiz2.html" class="active">Quiz 6-10</a>
+            <a href="quiz3.html">Quiz 11-15</a>
+            <a href="quiz4.html">Quiz 16-20</a>
+            <a href="quiz5.html">Quiz 21-25</a>
+        </nav>
+
+        <main class="quiz-container">
+            <!-- Frage 6: Zusammenhangsfrage - Binärsystem -->
+            <div class="question-box" data-question="6">
+                <div class="question-header">
+                    <span class="question-number">[Frage 6/25]</span>
+                    <span class="question-type">Zusammenhänge - Binärsystem</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Ordnen Sie die dezimalen Werte den entsprechenden binären Darstellungen zu.</p>
+                    <div class="matching-question">
+                        <div class="matching-left">
+                            <p><strong>Dezimal:</strong></p>
+                            <p>1) 64</p>
+                            <p>2) 255</p>
+                            <p>3) 128</p>
+                        </div>
+                        <div class="matching-right">
+                            <p><strong>Binär:</strong></p>
+                            <label><input type="radio" name="q6-1" value="a"> A) 11111111</label>
+                            <label><input type="radio" name="q6-1" value="b" data-correct="true"> B) 01000000</label>
+                            <label><input type="radio" name="q6-1" value="c"> C) 10000000</label>
+                            <br><br>
+                            <label><input type="radio" name="q6-2" value="a" data-correct="true"> A) 11111111</label>
+                            <label><input type="radio" name="q6-2" value="b"> B) 01000000</label>
+                            <label><input type="radio" name="q6-2" value="c"> C) 10000000</label>
+                            <br><br>
+                            <label><input type="radio" name="q6-3" value="a"> A) 11111111</label>
+                            <label><input type="radio" name="q6-3" value="b"> B) 01000000</label>
+                            <label><input type="radio" name="q6-3" value="c" data-correct="true"> C) 10000000</label>
+                        </div>
+                    </div>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(6)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-6"></div>
+            </div>
+
+            <!-- Frage 7: Mustererkennung - Visuelle Logik -->
+            <div class="question-box" data-question="7">
+                <div class="question-header">
+                    <span class="question-number">[Frage 7/25]</span>
+                    <span class="question-type">Mustererkennung - Symbolische Reihen</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Identifizieren Sie das fehlende Symbol in der logischen Reihenfolge.</p>
+                    <div class="pattern-display">
+                        <p class="question-content">◆ ◇ ◆ ◆ ◇ ◆ ◆ ◆ ◇ ◆ ◆ ◆ ◆ ?</p>
+                    </div>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q7" value="a">
+                        <span class="answer-text">A) ◆</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q7" value="b" data-correct="true">
+                        <span class="answer-text">B) ◇</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q7" value="c">
+                        <span class="answer-text">C) ◆◇</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(7)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-7"></div>
+            </div>
+
+            <!-- Frage 8: Wahrscheinlichkeitsrechnung -->
+            <div class="question-box" data-question="8">
+                <div class="question-header">
+                    <span class="question-number">[Frage 8/25]</span>
+                    <span class="question-type">Mathematik - Wahrscheinlichkeit</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Berechnen Sie die Wahrscheinlichkeit des beschriebenen Ereignisses.</p>
+                    <p class="question-content">Ein Server hat eine durchschnittliche Verfügbarkeit von 99,9%. Ein zweiter unabhängiger Backup-Server hat ebenfalls 99,9% Verfügbarkeit. Wie hoch ist die Wahrscheinlichkeit, dass beide Server gleichzeitig ausfallen? Geben Sie das Ergebnis in Prozent an (auf 4 Dezimalstellen gerundet).</p>
+                </div>
+                <div class="answers">
+                    <input type="text" id="q8-input" class="text-input" placeholder="z.B. 0.0001">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(8)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-8"></div>
+            </div>
+
+            <!-- Frage 9: Vervollständigung - Netzwerkberechnung -->
+            <div class="question-box" data-question="9">
+                <div class="question-header">
+                    <span class="question-number">[Frage 9/25]</span>
+                    <span class="question-type">Vervollständigung - Subnetting</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Vervollständigen Sie die fehlenden Netzwerkinformationen.</p>
+                    <p class="question-content">Gegeben ist die IP-Adresse: 192.168.10.45/27<br>
+                    Wie lautet die Netzwerkadresse dieses Subnetzes?</p>
+                </div>
+                <div class="answers">
+                    <input type="text" id="q9-input" class="text-input" placeholder="z.B. 192.168.10.x">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(9)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-9"></div>
+            </div>
+
+            <!-- Frage 10: Multiple Choice - Hardware -->
+            <div class="question-box" data-question="10">
+                <div class="question-header">
+                    <span class="question-number">[Frage 10/25]</span>
+                    <span class="question-type">Multiple Choice - Hardware-Wissen</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Wählen Sie die richtige Aussage über RAID-Systeme.</p>
+                    <p class="question-content">Welche RAID-Konfiguration bietet sowohl Redundanz als auch verbesserte Leistung, benötigt jedoch mindestens 4 Festplatten?</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q10" value="a">
+                        <span class="answer-text">A) RAID 0 - Striping ohne Redundanz</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q10" value="b">
+                        <span class="answer-text">B) RAID 1 - Spiegelung</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q10" value="c">
+                        <span class="answer-text">C) RAID 5 - Striping mit verteilter Parität</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q10" value="d" data-correct="true">
+                        <span class="answer-text">D) RAID 10 - Kombination aus Striping und Spiegelung</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(10)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-10"></div>
+            </div>
+
+            <!-- Ergebnisanzeige -->
+            <div class="results-box" id="results">
+                <div class="results-header">Ergebnisübersicht - Quiz 6-10</div>
+                <div class="results-content" id="results-content"></div>
+                <div class="results-actions">
+                    <button class="nav-btn" onclick="location.href='index.html'">← Zurück zu Quiz 1-5</button>
+                    <button class="nav-btn" onclick="location.href='quiz3.html'">Weiter zu Quiz 11-15 →</button>
+                    <button class="reset-btn" onclick="resetQuiz()">Quiz zurücksetzen</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="terminal-footer">
+            <p>© 2025 FISI-Prep | Kostenlose Eignungstest-Vorbereitung | Kein Login erforderlich</p>
+            <p class="footer-info">Entwickelt von einem IT-Enthusiasten, der es satt hat, dass überall Geld für Grundlagen verlangt wird.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

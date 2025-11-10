@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FISI Eignungstest - Quiz 21-25</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="terminal-header">
+            <div class="terminal-title">
+                <span class="prompt">root@fisi-prep:~$</span> ./eignungstest_vorbereitung.sh --section=5 --final
+            </div>
+            <div class="terminal-subtitle">
+                Fachinformatiker Systemintegration - Quiz 21-25 (Finale Runde)
+            </div>
+        </header>
+
+        <nav class="navigation">
+            <a href="index.html">Quiz 1-5</a>
+            <a href="quiz2.html">Quiz 6-10</a>
+            <a href="quiz3.html">Quiz 11-15</a>
+            <a href="quiz4.html">Quiz 16-20</a>
+            <a href="quiz5.html" class="active">Quiz 21-25</a>
+        </nav>
+
+        <main class="quiz-container">
+            <!-- Frage 21: Eigenwissen - Virtualisierung -->
+            <div class="question-box" data-question="21">
+                <div class="question-header">
+                    <span class="question-number">[Frage 21/25]</span>
+                    <span class="question-type">Eigenwissen - Virtualisierung</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Nennen Sie den Fachbegriff (Typ 1 oder Typ 2).</p>
+                    <p class="question-content">Wie bezeichnet man einen Hypervisor, der direkt auf der Hardware läuft, ohne ein darunterliegendes Betriebssystem?</p>
+                </div>
+                <div class="answers">
+                    <input type="text" id="q21-input" class="text-input" placeholder="Typ ? (Zahl eingeben)">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(21)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-21"></div>
+            </div>
+
+            <!-- Frage 22: Vervollständigung - SQL Query -->
+            <div class="question-box" data-question="22">
+                <div class="question-header">
+                    <span class="question-number">[Frage 22/25]</span>
+                    <span class="question-type">Vervollständigung - SQL</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Vervollständigen Sie die SQL-Abfrage mit dem korrekten Befehl.</p>
+                    <div class="code-block">
+                        <pre>SELECT name, email FROM users WHERE status = 'active' _____ BY registration_date DESC;</pre>
+                    </div>
+                    <p class="question-content">Welches Schlüsselwort fehlt, um die Ergebnisse nach Registrierungsdatum absteigend zu sortieren?</p>
+                </div>
+                <div class="answers">
+                    <input type="text" id="q22-input" class="text-input" placeholder="SQL Keyword">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(22)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-22"></div>
+            </div>
+
+            <!-- Frage 23: Zahlenreihe - Primzahlen -->
+            <div class="question-box" data-question="23">
+                <div class="question-header">
+                    <span class="question-number">[Frage 23/25]</span>
+                    <span class="question-type">Logisches Denken - Primzahlenreihe</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Identifizieren Sie die nächste Primzahl in der Sequenz.</p>
+                    <p class="question-content">2, 3, 5, 7, 11, 13, 17, 19, 23, ?</p>
+                </div>
+                <div class="answers">
+                    <input type="number" id="q23-input" class="text-input" placeholder="Nächste Primzahl">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(23)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-23"></div>
+            </div>
+
+            <!-- Frage 24: Englisch C2 - Conditional Clauses -->
+            <div class="question-box" data-question="24">
+                <div class="question-header">
+                    <span class="question-number">[Frage 24/25]</span>
+                    <span class="question-type">Englisch C2 - Advanced Conditionals</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Instruction: Select the grammatically correct conditional construction.</p>
+                    <p class="question-content">Had the firewall configuration been properly audited, the breach _____.</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q24" value="a">
+                        <span class="answer-text">A) would prevent</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q24" value="b">
+                        <span class="answer-text">B) would be prevented</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q24" value="c" data-correct="true">
+                        <span class="answer-text">C) would have been prevented</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q24" value="d">
+                        <span class="answer-text">D) will have been prevented</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(24)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-24"></div>
+            </div>
+
+            <!-- Frage 25: Multiple Choice - Cloud Computing -->
+            <div class="question-box" data-question="25">
+                <div class="question-header">
+                    <span class="question-number">[Frage 25/25]</span>
+                    <span class="question-type">Multiple Choice - Cloud-Technologie</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Wählen Sie die korrekte Definition des Cloud-Service-Modells.</p>
+                    <p class="question-content">Bei welchem Cloud-Service-Modell hat der Kunde die vollständige Kontrolle über Betriebssystem, Middleware und Anwendungen, während der Provider nur die Infrastruktur (Server, Speicher, Netzwerk) bereitstellt?</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q25" value="a">
+                        <span class="answer-text">A) Software as a Service (SaaS)</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q25" value="b">
+                        <span class="answer-text">B) Platform as a Service (PaaS)</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q25" value="c" data-correct="true">
+                        <span class="answer-text">C) Infrastructure as a Service (IaaS)</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q25" value="d">
+                        <span class="answer-text">D) Function as a Service (FaaS)</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(25)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-25"></div>
+            </div>
+
+            <!-- Ergebnisanzeige -->
+            <div class="results-box" id="results">
+                <div class="results-header">🎉 Finale Ergebnisübersicht - Quiz 21-25 🎉</div>
+                <div class="results-content" id="results-content"></div>
+                <div class="results-actions">
+                    <button class="nav-btn" onclick="location.href='quiz4.html'">← Zurück zu Quiz 16-20</button>
+                    <button class="nav-btn" onclick="location.href='index.html'">🔄 Von vorne beginnen</button>
+                    <button class="reset-btn" onclick="resetQuiz()">Quiz zurücksetzen</button>
+                </div>
+                <div class="final-message">
+                    <p style="margin-top: 20px; color: #00ff00;">Herzlichen Glückwunsch! Sie haben alle 25 Fragen abgeschlossen.</p>
+                    <p style="color: #00dd00;">Viel Erfolg bei Ihrem Eignungstest zum Fachinformatiker für Systemintegration!</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="terminal-footer">
+            <p>© 2025 FISI-Prep | Kostenlose Eignungstest-Vorbereitung | Kein Login erforderlich</p>
+            <p class="footer-info">Entwickelt von einem IT-Enthusiasten, der es satt hat, dass überall Geld für Grundlagen verlangt wird.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

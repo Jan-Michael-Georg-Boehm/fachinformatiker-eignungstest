@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FISI Eignungstest - Quiz 16-20</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="terminal-header">
+            <div class="terminal-title">
+                <span class="prompt">root@fisi-prep:~$</span> ./eignungstest_vorbereitung.sh --section=4
+            </div>
+            <div class="terminal-subtitle">
+                Fachinformatiker Systemintegration - Quiz 16-20
+            </div>
+        </header>
+
+        <nav class="navigation">
+            <a href="index.html">Quiz 1-5</a>
+            <a href="quiz2.html">Quiz 6-10</a>
+            <a href="quiz3.html">Quiz 11-15</a>
+            <a href="quiz4.html" class="active">Quiz 16-20</a>
+            <a href="quiz5.html">Quiz 21-25</a>
+        </nav>
+
+        <main class="quiz-container">
+            <!-- Frage 16: Zusammenhang - Ports und Dienste -->
+            <div class="question-box" data-question="16">
+                <div class="question-header">
+                    <span class="question-number">[Frage 16/25]</span>
+                    <span class="question-type">Zusammenhänge - Netzwerk-Ports</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Ordnen Sie die Dienste den korrekten Standard-Ports zu.</p>
+                    <div class="matching-question">
+                        <div class="matching-left">
+                            <p><strong>Dienst:</strong></p>
+                            <p>1) HTTPS</p>
+                            <p>2) SSH</p>
+                            <p>3) DNS</p>
+                        </div>
+                        <div class="matching-right">
+                            <p><strong>Port:</strong></p>
+                            <label><input type="radio" name="q16-1" value="a"> A) 22</label>
+                            <label><input type="radio" name="q16-1" value="b" data-correct="true"> B) 443</label>
+                            <label><input type="radio" name="q16-1" value="c"> C) 53</label>
+                            <br><br>
+                            <label><input type="radio" name="q16-2" value="a" data-correct="true"> A) 22</label>
+                            <label><input type="radio" name="q16-2" value="b"> B) 443</label>
+                            <label><input type="radio" name="q16-2" value="c"> C) 53</label>
+                            <br><br>
+                            <label><input type="radio" name="q16-3" value="a"> A) 22</label>
+                            <label><input type="radio" name="q16-3" value="b"> B) 443</label>
+                            <label><input type="radio" name="q16-3" value="c" data-correct="true"> C) 53</label>
+                        </div>
+                    </div>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(16)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-16"></div>
+            </div>
+
+            <!-- Frage 17: Mustererkennung - Matrix -->
+            <div class="question-box" data-question="17">
+                <div class="question-header">
+                    <span class="question-number">[Frage 17/25]</span>
+                    <span class="question-type">Mustererkennung - Logische Matrix</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Welche Zahl vervollständigt die Matrix logisch?</p>
+                    <div class="pattern-display">
+                        <pre style="font-family: 'Courier New', monospace; font-size: 1.1em;">
+    2   4   8
+    3   9  27
+    4  16   ?
+                        </pre>
+                    </div>
+                    <p class="question-content">Jede Zeile folgt einem eigenen Muster.</p>
+                </div>
+                <div class="answers">
+                    <input type="number" id="q17-input" class="text-input" placeholder="Fehlende Zahl">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(17)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-17"></div>
+            </div>
+
+            <!-- Frage 18: Umrechnung - Datenmengen -->
+            <div class="question-box" data-question="18">
+                <div class="question-header">
+                    <span class="question-number">[Frage 18/25]</span>
+                    <span class="question-type">Mathematik - Einheitenumrechnung</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Rechnen Sie die Datenmenge korrekt um.</p>
+                    <p class="question-content">Ein Backup umfasst 524.288 MB. Wie viel TB sind das? (Nutzen Sie: 1 TB = 1024 GB = 1.048.576 MB)</p>
+                </div>
+                <div class="answers">
+                    <input type="text" id="q18-input" class="text-input" placeholder="Antwort in TB (z.B. 0.5)">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(18)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-18"></div>
+            </div>
+
+            <!-- Frage 19: Englisch C2 - Technical Writing -->
+            <div class="question-box" data-question="19">
+                <div class="question-header">
+                    <span class="question-number">[Frage 19/25]</span>
+                    <span class="question-type">Englisch C2 - Technical Vocabulary</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Instruction: Select the term that best completes the technical description.</p>
+                    <p class="question-content">In a microservices architecture, the _____ pattern ensures that services can communicate asynchronously, thereby preventing cascading failures and improving system resilience.</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q19" value="a">
+                        <span class="answer-text">A) Monolithic deployment</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q19" value="b" data-correct="true">
+                        <span class="answer-text">B) Event-driven messaging</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q19" value="c">
+                        <span class="answer-text">C) Synchronous REST APIs</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q19" value="d">
+                        <span class="answer-text">D) Tight coupling</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(19)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-19"></div>
+            </div>
+
+            <!-- Frage 20: Multiple Choice - Betriebssysteme -->
+            <div class="question-box" data-question="20">
+                <div class="question-header">
+                    <span class="question-number">[Frage 20/25]</span>
+                    <span class="question-type">Multiple Choice - Betriebssysteme</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Identifizieren Sie die korrekte Aussage über Linux-Dateisysteme.</p>
+                    <p class="question-content">Welches Dateisystem unterstützt Journaling, Snapshots und native Komprimierung?</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q20" value="a">
+                        <span class="answer-text">A) FAT32</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q20" value="b">
+                        <span class="answer-text">B) ext4</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q20" value="c" data-correct="true">
+                        <span class="answer-text">C) Btrfs (B-Tree Filesystem)</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q20" value="d">
+                        <span class="answer-text">D) NTFS</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(20)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-20"></div>
+            </div>
+
+            <!-- Ergebnisanzeige -->
+            <div class="results-box" id="results">
+                <div class="results-header">Ergebnisübersicht - Quiz 16-20</div>
+                <div class="results-content" id="results-content"></div>
+                <div class="results-actions">
+                    <button class="nav-btn" onclick="location.href='quiz3.html'">← Zurück zu Quiz 11-15</button>
+                    <button class="nav-btn" onclick="location.href='quiz5.html'">Weiter zu Quiz 21-25 →</button>
+                    <button class="reset-btn" onclick="resetQuiz()">Quiz zurücksetzen</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="terminal-footer">
+            <p>© 2025 FISI-Prep | Kostenlose Eignungstest-Vorbereitung | Kein Login erforderlich</p>
+            <p class="footer-info">Entwickelt von einem IT-Enthusiasten, der es satt hat, dass überall Geld für Grundlagen verlangt wird.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

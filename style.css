@@ -1,0 +1,475 @@
+/* ===========================
+   FISI Eignungstest - Terminal Style
+   Minimalistisch | Darkmode | Monochrome Grün
+   =========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-dark: #0a0e14;
+    --bg-terminal: #0d1117;
+    --bg-box: #161b22;
+    --text-primary: #00ff00;
+    --text-secondary: #00dd00;
+    --text-muted: #00aa00;
+    --border-color: #00ff00;
+    --accent: #00ff00;
+    --error: #ff0044;
+    --success: #00ff00;
+    --shadow: rgba(0, 255, 0, 0.2);
+}
+
+body {
+    font-family: 'Courier New', 'Consolas', monospace;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ===========================
+   HEADER / TERMINAL TITLE
+   =========================== */
+
+.terminal-header {
+    background: var(--bg-terminal);
+    border: 2px solid var(--border-color);
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px var(--shadow);
+}
+
+.terminal-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.prompt {
+    color: var(--text-secondary);
+}
+
+.terminal-subtitle {
+    color: var(--text-muted);
+    font-size: 0.95em;
+    font-style: italic;
+}
+
+/* ===========================
+   NAVIGATION
+   =========================== */
+
+.navigation {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.navigation a {
+    background: var(--bg-box);
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 12px 20px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s;
+    font-size: 0.95em;
+}
+
+.navigation a:hover {
+    background: var(--bg-terminal);
+    box-shadow: 0 0 15px var(--shadow);
+    transform: translateY(-2px);
+}
+
+.navigation a.active {
+    background: var(--accent);
+    color: var(--bg-dark);
+    font-weight: bold;
+    border: 2px solid var(--accent);
+}
+
+/* ===========================
+   QUIZ CONTAINER
+   =========================== */
+
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.question-box {
+    background: var(--bg-box);
+    border: 2px solid var(--border-color);
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.1);
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--text-muted);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.question-number {
+    color: var(--text-secondary);
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.question-type {
+    color: var(--text-muted);
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+.question-text {
+    margin-bottom: 20px;
+}
+
+.instruction {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: rgba(0, 255, 0, 0.05);
+    border-left: 3px solid var(--accent);
+}
+
+.question-content {
+    color: var(--text-primary);
+    font-size: 1.05em;
+    margin: 10px 0;
+}
+
+/* ===========================
+   ANSWERS / INPUTS
+   =========================== */
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.answer-option {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: var(--bg-terminal);
+    border: 1px solid var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.answer-option:hover {
+    border-color: var(--accent);
+    background: rgba(0, 255, 0, 0.05);
+}
+
+.answer-option input[type="radio"] {
+    margin-right: 12px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.answer-text {
+    color: var(--text-primary);
+    font-size: 0.95em;
+}
+
+.text-input {
+    width: 100%;
+    padding: 12px;
+    background: var(--bg-terminal);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+    font-size: 1em;
+}
+
+.text-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 10px var(--shadow);
+}
+
+.text-input::placeholder {
+    color: var(--text-muted);
+}
+
+/* ===========================
+   MATCHING QUESTIONS
+   =========================== */
+
+.matching-question {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    padding: 15px;
+    background: var(--bg-terminal);
+    border: 1px solid var(--text-muted);
+}
+
+.matching-left, .matching-right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.matching-right label {
+    display: block;
+    padding: 8px;
+    background: var(--bg-box);
+    border: 1px solid var(--text-muted);
+    cursor: pointer;
+}
+
+.matching-right label:hover {
+    border-color: var(--accent);
+}
+
+/* ===========================
+   PATTERN DISPLAY
+   =========================== */
+
+.pattern-display {
+    padding: 20px;
+    background: var(--bg-terminal);
+    border: 2px solid var(--border-color);
+    text-align: center;
+    font-size: 1.5em;
+    letter-spacing: 8px;
+    color: var(--text-primary);
+}
+
+.code-block {
+    background: var(--bg-terminal);
+    border: 2px solid var(--border-color);
+    padding: 15px;
+    overflow-x: auto;
+}
+
+.code-block pre {
+    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+    margin: 0;
+}
+
+/* ===========================
+   BUTTONS
+   =========================== */
+
+.check-btn, .nav-btn, .reset-btn {
+    padding: 12px 25px;
+    background: var(--bg-terminal);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.check-btn:hover, .nav-btn:hover {
+    background: var(--accent);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--shadow);
+    transform: translateY(-2px);
+}
+
+.reset-btn {
+    border-color: var(--error);
+    color: var(--error);
+}
+
+.reset-btn:hover {
+    background: var(--error);
+    color: white;
+}
+
+/* ===========================
+   FEEDBACK
+   =========================== */
+
+.feedback {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 0;
+    display: none;
+    border: 2px solid;
+    font-weight: bold;
+}
+
+.feedback.correct {
+    background: rgba(0, 255, 0, 0.1);
+    border-color: var(--success);
+    color: var(--success);
+    display: block;
+}
+
+.feedback.incorrect {
+    background: rgba(255, 0, 68, 0.1);
+    border-color: var(--error);
+    color: var(--error);
+    display: block;
+}
+
+/* ===========================
+   RESULTS BOX
+   =========================== */
+
+.results-box {
+    background: var(--bg-box);
+    border: 3px solid var(--accent);
+    padding: 30px;
+    margin-top: 30px;
+    display: none;
+    box-shadow: 0 0 30px var(--shadow);
+}
+
+.results-box.show {
+    display: block;
+}
+
+.results-header {
+    font-size: 1.5em;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.results-content {
+    color: var(--text-secondary);
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 25px;
+    line-height: 1.8;
+}
+
+.results-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.final-message {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 2px solid var(--accent);
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+
+.terminal-footer {
+    margin-top: 50px;
+    padding: 20px;
+    border-top: 2px solid var(--border-color);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9em;
+}
+
+.footer-info {
+    margin-top: 10px;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .terminal-title {
+        font-size: 1.1em;
+    }
+
+    .navigation {
+        gap: 5px;
+    }
+
+    .navigation a {
+        padding: 8px 12px;
+        font-size: 0.85em;
+    }
+
+    .question-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .matching-question {
+        grid-template-columns: 1fr;
+    }
+
+    .pattern-display {
+        font-size: 1.2em;
+        letter-spacing: 4px;
+    }
+
+    .results-actions {
+        flex-direction: column;
+    }
+}
+
+/* ===========================
+   SCROLLBAR STYLING
+   =========================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* ===========================
+   SELECTION HIGHLIGHTING
+   =========================== */
+
+::selection {
+    background: var(--accent);
+    color: var(--bg-dark);
+}

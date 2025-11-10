@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FISI Eignungstest - Quiz 11-15</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="terminal-header">
+            <div class="terminal-title">
+                <span class="prompt">root@fisi-prep:~$</span> ./eignungstest_vorbereitung.sh --section=3
+            </div>
+            <div class="terminal-subtitle">
+                Fachinformatiker Systemintegration - Quiz 11-15
+            </div>
+        </header>
+
+        <nav class="navigation">
+            <a href="index.html">Quiz 1-5</a>
+            <a href="quiz2.html">Quiz 6-10</a>
+            <a href="quiz3.html" class="active">Quiz 11-15</a>
+            <a href="quiz4.html">Quiz 16-20</a>
+            <a href="quiz5.html">Quiz 21-25</a>
+        </nav>
+
+        <main class="quiz-container">
+            <!-- Frage 11: Englisch C2 - Grammar & Syntax -->
+            <div class="question-box" data-question="11">
+                <div class="question-header">
+                    <span class="question-number">[Frage 11/25]</span>
+                    <span class="question-type">Englisch C2 - Advanced Grammar</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Instruction: Complete the sentence with the correct phrasal verb or construction.</p>
+                    <p class="question-content">The system administrator needs to _____ the legacy infrastructure before the migration can proceed, lest unforeseen compatibility issues _____ during deployment.</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q11" value="a">
+                        <span class="answer-text">A) look over / will arise</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q11" value="b" data-correct="true">
+                        <span class="answer-text">B) assess thoroughly / arise</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q11" value="c">
+                        <span class="answer-text">C) check out / would arise</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q11" value="d">
+                        <span class="answer-text">D) overview / had arisen</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(11)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-11"></div>
+            </div>
+
+            <!-- Frage 12: Zahlenreihe - Fibonacci-Variante -->
+            <div class="question-box" data-question="12">
+                <div class="question-header">
+                    <span class="question-number">[Frage 12/25]</span>
+                    <span class="question-type">Logisches Denken - Zahlenreihe</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Erkennen Sie das Muster und setzen Sie die Zahlenreihe fort.</p>
+                    <p class="question-content">3, 7, 15, 31, 63, ?</p>
+                </div>
+                <div class="answers">
+                    <input type="number" id="q12-input" class="text-input" placeholder="Ihre Antwort">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(12)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-12"></div>
+            </div>
+
+            <!-- Frage 13: Eigenwissen - Protokolle -->
+            <div class="question-box" data-question="13">
+                <div class="question-header">
+                    <span class="question-number">[Frage 13/25]</span>
+                    <span class="question-type">Eigenwissen - Netzwerkprotokolle</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Nennen Sie das Protokoll (Abkürzung).</p>
+                    <p class="question-content">Welches Protokoll wird verwendet, um automatisch IP-Adressen an Clients im Netzwerk zu verteilen?</p>
+                </div>
+                <div class="answers">
+                    <input type="text" id="q13-input" class="text-input" placeholder="Protokollname (z.B. HTTP)">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(13)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-13"></div>
+            </div>
+
+            <!-- Frage 14: Prozentrechnung -->
+            <div class="question-box" data-question="14">
+                <div class="question-header">
+                    <span class="question-number">[Frage 14/25]</span>
+                    <span class="question-type">Mathematik - Prozentrechnung</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Führen Sie die Prozentrechnung durch.</p>
+                    <p class="question-content">Die Speicherkapazität eines Servers beträgt 8 TB. Derzeit sind 65% belegt. Nach einem Update werden weitere 1,2 TB benötigt. Wie viel Prozent des Gesamtspeichers sind dann belegt? (Auf ganze Prozent runden)</p>
+                </div>
+                <div class="answers">
+                    <input type="number" id="q14-input" class="text-input" placeholder="Prozent (nur Zahl)">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(14)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-14"></div>
+            </div>
+
+            <!-- Frage 15: Multiple Choice - Datensicherheit -->
+            <div class="question-box" data-question="15">
+                <div class="question-header">
+                    <span class="question-number">[Frage 15/25]</span>
+                    <span class="question-type">Multiple Choice - IT-Sicherheit</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Wählen Sie die korrekte Definition.</p>
+                    <p class="question-content">Was versteht man unter einem "Zero-Day-Exploit"?</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q15" value="a">
+                        <span class="answer-text">A) Eine Sicherheitslücke, die seit weniger als 24 Stunden bekannt ist</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q15" value="b" data-correct="true">
+                        <span class="answer-text">B) Eine Sicherheitslücke, für die noch kein Patch existiert und die aktiv ausgenutzt wird</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q15" value="c">
+                        <span class="answer-text">C) Ein Angriff, der am ersten Tag eines Monats durchgeführt wird</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q15" value="d">
+                        <span class="answer-text">D) Ein Software-Update, das alle bekannten Lücken schließt</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(15)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-15"></div>
+            </div>
+
+            <!-- Ergebnisanzeige -->
+            <div class="results-box" id="results">
+                <div class="results-header">Ergebnisübersicht - Quiz 11-15</div>
+                <div class="results-content" id="results-content"></div>
+                <div class="results-actions">
+                    <button class="nav-btn" onclick="location.href='quiz2.html'">← Zurück zu Quiz 6-10</button>
+                    <button class="nav-btn" onclick="location.href='quiz4.html'">Weiter zu Quiz 16-20 →</button>
+                    <button class="reset-btn" onclick="resetQuiz()">Quiz zurücksetzen</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="terminal-footer">
+            <p>© 2025 FISI-Prep | Kostenlose Eignungstest-Vorbereitung | Kein Login erforderlich</p>
+            <p class="footer-info">Entwickelt von einem IT-Enthusiasten, der es satt hat, dass überall Geld für Grundlagen verlangt wird.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

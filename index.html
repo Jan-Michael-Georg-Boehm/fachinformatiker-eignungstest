@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FISI Eignungstest - Kostenlose Vorbereitung</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="terminal-header">
+            <div class="terminal-title">
+                <span class="prompt">root@fisi-prep:~$</span> ./eignungstest_vorbereitung.sh
+            </div>
+            <div class="terminal-subtitle">
+                Fachinformatiker Systemintegration - Eignungstest Simulator v1.0
+            </div>
+        </header>
+
+        <nav class="navigation">
+            <a href="index.html" class="active">Quiz 1-5</a>
+            <a href="quiz2.html">Quiz 6-10</a>
+            <a href="quiz3.html">Quiz 11-15</a>
+            <a href="quiz4.html">Quiz 16-20</a>
+            <a href="quiz5.html">Quiz 21-25</a>
+        </nav>
+
+        <main class="quiz-container">
+            <!-- Frage 1: Multiple Choice - IT-Fachwissen -->
+            <div class="question-box" data-question="1">
+                <div class="question-header">
+                    <span class="question-number">[Frage 1/25]</span>
+                    <span class="question-type">Multiple Choice - IT-Fachwissen</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Wählen Sie die korrekte Antwort aus.</p>
+                    <p class="question-content">Welche Aussage über das OSI-Schichtenmodell ist korrekt?</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q1" value="a">
+                        <span class="answer-text">A) Das OSI-Modell besteht aus 5 Schichten</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q1" value="b">
+                        <span class="answer-text">B) Die Transportschicht ist für die Routing-Funktionen zuständig</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q1" value="c" data-correct="true">
+                        <span class="answer-text">C) Die Vermittlungsschicht (Layer 3) ist für die logische Adressierung und das Routing zuständig</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q1" value="d">
+                        <span class="answer-text">D) Die Anwendungsschicht arbeitet direkt mit elektrischen Signalen</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(1)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-1"></div>
+            </div>
+
+            <!-- Frage 2: Zahlenreihe vervollständigen -->
+            <div class="question-box" data-question="2">
+                <div class="question-header">
+                    <span class="question-number">[Frage 2/25]</span>
+                    <span class="question-type">Logisches Denken - Zahlenreihe</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Erkennen Sie das Muster und vervollständigen Sie die Zahlenreihe.</p>
+                    <p class="question-content">2, 6, 12, 20, 30, ?</p>
+                </div>
+                <div class="answers">
+                    <input type="number" id="q2-input" class="text-input" placeholder="Ihre Antwort eingeben">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(2)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-2"></div>
+            </div>
+
+            <!-- Frage 3: Grundrechenarten / Dreisatz -->
+            <div class="question-box" data-question="3">
+                <div class="question-header">
+                    <span class="question-number">[Frage 3/25]</span>
+                    <span class="question-type">Mathematik - Dreisatz</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Berechnen Sie mithilfe des Dreisatzes die gesuchte Größe.</p>
+                    <p class="question-content">Ein Server verarbeitet 450 Anfragen in 15 Minuten. Wie viele Anfragen kann er in 2 Stunden verarbeiten?</p>
+                </div>
+                <div class="answers">
+                    <input type="number" id="q3-input" class="text-input" placeholder="Anzahl der Anfragen">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(3)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-3"></div>
+            </div>
+
+            <!-- Frage 4: Eigenwissen - Fachbegriff -->
+            <div class="question-box" data-question="4">
+                <div class="question-header">
+                    <span class="question-number">[Frage 4/25]</span>
+                    <span class="question-type">Eigenwissen - IT-Terminologie</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Geben Sie den korrekten Fachbegriff ein (ein Wort).</p>
+                    <p class="question-content">Wie nennt man die eindeutige physikalische Adresse einer Netzwerkkarte, die aus 48 Bit besteht?</p>
+                </div>
+                <div class="answers">
+                    <input type="text" id="q4-input" class="text-input" placeholder="Fachbegriff eingeben">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(4)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-4"></div>
+            </div>
+
+            <!-- Frage 5: Englisch C2 - Technical Reading -->
+            <div class="question-box" data-question="5">
+                <div class="question-header">
+                    <span class="question-number">[Frage 5/25]</span>
+                    <span class="question-type">Englisch C2 - Technical Comprehension</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Instruction: Read the technical description and select the most appropriate answer.</p>
+                    <p class="question-content" style="font-style: italic;">
+                        "The implementation of a redundant array architecture significantly enhances data integrity by distributing information across multiple storage devices. This configuration not only mitigates the risk of catastrophic data loss but also facilitates concurrent read operations, thereby optimizing throughput in high-demand environments."
+                    </p>
+                    <p class="question-content">Which storage technology is being described?</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q5" value="a">
+                        <span class="answer-text">A) Network Attached Storage (NAS)</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q5" value="b" data-correct="true">
+                        <span class="answer-text">B) Redundant Array of Independent Disks (RAID)</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q5" value="c">
+                        <span class="answer-text">C) Solid State Drive (SSD)</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q5" value="d">
+                        <span class="answer-text">D) Cloud Object Storage</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(5)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-5"></div>
+            </div>
+
+            <!-- Ergebnisanzeige -->
+            <div class="results-box" id="results">
+                <div class="results-header">Ergebnisübersicht - Quiz 1-5</div>
+                <div class="results-content" id="results-content"></div>
+                <div class="results-actions">
+                    <button class="nav-btn" onclick="location.href='quiz2.html'">Weiter zu Quiz 6-10 →</button>
+                    <button class="reset-btn" onclick="resetQuiz()">Quiz zurücksetzen</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="terminal-footer">
+            <p>© 2025 FISI-Prep | Kostenlose Eignungstest-Vorbereitung | Kein Login erforderlich</p>
+            <p class="footer-info">Entwickelt von einem IT-Enthusiasten, der es satt hat, dass überall Geld für Grundlagen verlangt wird.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
