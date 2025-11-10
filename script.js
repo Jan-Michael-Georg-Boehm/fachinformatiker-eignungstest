@@ -421,7 +421,6 @@ window.addEventListener('load', () => {
     const welcomeLine = document.createElement('div');
     welcomeLine.innerHTML = `<span style="color: #0f0;">FISI Eignungstest Terminal v1.0 gestartet</span>
 <span style="color: #888;">Tippe 'help' für verfügbare Befehle</span>
-<span style="color: #888;">Easter Egg: Versuche 'sudo answer' 😉</span>
 
 `;
     welcomeLine.style.whiteSpace = 'pre-wrap';
