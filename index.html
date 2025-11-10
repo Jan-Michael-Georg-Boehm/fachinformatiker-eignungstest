@@ -415,7 +415,7 @@
                     <span class="question-type">⚠️ EXPERTENFRAGE - Subnetting Berechnung</span>
                 </div>
                 <div class="question-text">
-                    <p class="instruction">Aufgabenstellung: Berechnen Sie das letzte Oktett der Broadcast-Adresse des dritten Subnetzes.</p>
+                    <p class="instruction">Aufgabenstellung: Berechnen Sie das dritte Oktett der Broadcast-Adresse des dritten Subnetzes.</p>
                     <p class="question-content" style="line-height: 1.6;">
                         <strong>Gegeben:</strong><br>
                         • Netzadresse: 172.16.0.0/16<br>
@@ -423,26 +423,27 @@
                         • Alle Subnetze sollen möglichst groß sein<br><br>
                         
                         <strong>Gesucht:</strong><br>
-                        Wie lautet das <u>letzte Oktett</u> (die letzte Zahl) der Broadcast-Adresse des <u>dritten Subnetzes</u>?<br><br>
+                        Wie lautet das <u>dritte Oktett</u> der Broadcast-Adresse des <u>dritten Subnetzes</u>?<br><br>
                         
-                        <strong>Beispiel:</strong> Bei einer Broadcast-Adresse 192.168.1.255 wäre die Antwort: <code>255</code>
+                        <strong>Beispiel:</strong> Bei einer Broadcast-Adresse 192.168.127.255 wäre die Antwort: <code>127</code>
                     </p>
                     <p class="hint" style="color: #888; font-size: 0.9em; margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.05); border-left: 3px solid #0f0;">
-                        💡 <strong>Hinweise:</strong><br>
-                        1. Berechne zuerst, wie viele Bits für 8 Subnetze benötigt werden (2^n ≥ 8)<br>
-                        2. Erweitere die Subnetzmaske entsprechend<br>
-                        3. Berechne die Schrittweite zwischen den Subnetzen<br>
-                        4. Finde das dritte Subnetz<br>
-                        5. Die Broadcast-Adresse ist die letzte Adresse vor dem nächsten Subnetz<br><br>
-                        🔒 <strong>Diese Antwort benötigst du für den geheimen Terminal-Befehl "sudo answer"!</strong>
+                        💡 <strong>Lösungsweg:</strong><br>
+                        1. Berechne, wie viele Bits für 8 Subnetze nötig sind: 2^n ≥ 8<br>
+                        2. Erweitere /16 um diese Bits → neue Subnetzmaske<br>
+                        3. Berechne die Schrittweite: 256 - Wert_im_betroffenen_Oktett<br>
+                        4. Zähle bis zum dritten Subnetz<br>
+                        5. Broadcast = letzte Adresse vor dem nächsten Subnetz<br><br>
+                        🔒 <strong>Diese Antwort ist das Passwort für "sudo answer"!</strong>
                     </p>
                 </div>
                 <div class="answers">
-                    <input type="number" id="q16-input" class="text-input" placeholder="Nur das letzte Oktett eingeben (z.B. 255)" min="0" max="255">
+                    <input type="number" id="q16-input" class="text-input" placeholder="Nur das dritte Oktett (z.B. 95)" min="0" max="255">
                 </div>
                 <button class="check-btn" onclick="checkAnswer(16)">Antwort überprüfen</button>
                 <div class="feedback" id="feedback-16"></div>
             </div>
+
 
             <!-- Ergebnisanzeige -->
             <div class="results-box" id="results">
