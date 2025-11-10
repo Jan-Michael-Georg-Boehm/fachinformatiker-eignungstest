@@ -12,7 +12,11 @@ const answers = {
             ['daten', 'signal', 'signale', 'strom']      // Antwort 3 
         ], explanation: `1. Haus → Garten (umgibt) | Computer → Netzwerk (verbindet) 2. Buch → Bibliothek (Sammlung) | Datei → Ordner/Verzeichnis (Sammlung) 3. Straße → Auto (Transport) | Kabel → Daten/Signal (Transport)` 
     },
-    2: { type: 'number', correct: 42, explanation: 'Muster: +4, +6, +8, +10, +12 → 30 + 12 = 42' },
+    2: { 
+        type: 'multiple-number', 
+        correct: [42, 243, 13, 64],
+        explanation: `Reihe 1: n×(n+1) → 6×7 = 42 Reihe 2: ×3 → 81×3 = 243 Reihe 3: Fibonacci → 5+8 = 13 Reihe 4: 2^n → 2^6 = 64` 
+    },    
     3: { type: 'number', correct: 3600, explanation: '450 Anfragen / 15 Min = 30 Anfragen/Min → 120 Min × 30 = 3600 Anfragen' },
     4: { type: 'text', correct: ['mac', 'mac-adresse', 'macadresse', 'mac adresse'], explanation: 'MAC-Adresse (Media Access Control Address)' },
     5: { type: 'radio', correct: 'b', explanation: 'RAID - Redundant Array of Independent Disks' },
@@ -139,6 +143,53 @@ function checkAnswer(questionNum) {
                 userAnswer.includes(correct.toLowerCase())
             );
             break;
+
+        case 'multiple-number':
+        // Prüfe alle vier Zahlenreihen
+        const numberInputs = [
+            document.getElementById(`q${questionNum}-input-1`),
+            document.getElementById(`q${questionNum}-input-2`),
+            document.getElementById(`q${questionNum}-input-3`),
+            document.getElementById(`q${questionNum}-input-4`)
+        ];
+        
+        // Prüfe ob alle ausgefüllt sind
+        if (numberInputs.some(input => !input || !input.value)) {
+            alert('Bitte beantworte alle vier Zahlenreihen!');
+            return;
+        }
+        
+        numberInputs.forEach((input, index) => {
+            const userNum = parseFloat(input.value);
+            const correctAnswer = answer.correct[index];
+            const isAnswerCorrect = (userNum === correctAnswer);
+            
+            if (isAnswerCorrect) {
+                correctCount++;
+                results.push(`✓ Reihe ${index + 1}: Richtig`);
+            } else {
+                results.push(`✗ Reihe ${index + 1}: Falsch`);
+            }
+        });
+        
+        isCorrect = (correctCount === 4);
+        
+        if (isCorrect) {
+            feedbackEl.className = 'feedback correct';
+            feedbackEl.innerHTML = `
+                ✓ Alle Zahlenreihen richtig!<br>
+                <span style="color: #aaa; font-size: 0.9em; white-space: pre-line;">${answer.explanation}</span>
+            `;
+        } else {
+            feedbackEl.className = 'feedback incorrect';
+            feedbackEl.innerHTML = `
+                ✗ ${correctCount} von 4 richtig<br>
+                ${results.join('<br>')}
+                <br><span style="color: #888; font-size: 0.9em;">Versuche es nochmal oder nutze 'sudo answer' im Terminal.</span>
+            `;
+            return; // Nicht als beantwortet zählen
+        }
+        break;
     }
 
     // Feedback für normale Fragen
@@ -322,6 +373,8 @@ function displayAllAnswers() {
         
         if (ans.type === 'multiple-text') {
             answerText = `1: ${ans.correct[0][0]} | 2: ${ans.correct[1][0]} | 3: ${ans.correct[2][0]}`;
+        } else if (ans.type === 'multiple-number') {
+            answerText = `1: ${ans.correct[0]} | 2: ${ans.correct[1]} | 3: ${ans.correct[2]} | 4: ${ans.correct[3]}`;
         } else {
             answerText = Array.isArray(ans.correct) ? ans.correct[0] : ans.correct;
         }
@@ -341,6 +394,7 @@ function displayAllAnswers() {
     
     return output;
 }
+
 
 
 function executeCommand(input) {

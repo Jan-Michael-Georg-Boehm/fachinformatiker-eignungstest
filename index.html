@@ -73,24 +73,57 @@
                 <div class="feedback" id="feedback-1"></div>
             </div>
 
-
-
-            <!-- Frage 2: Zahlenreihe vervollständigen -->
+            <!-- Frage 2: Zahlenreihen vervollständigen (Mehrfach) -->
             <div class="question-box" data-question="2">
                 <div class="question-header">
-                    <span class="question-number">[Frage 2/15]</span>
-                    <span class="question-type">Logisches Denken - Zahlenreihe</span>
+                    <span class="question-number">[Frage 2/16]</span>
+                    <span class="question-type">Logisches Denken - Zahlenreihen</span>
                 </div>
                 <div class="question-text">
-                    <p class="instruction">Aufgabenstellung: Erkennen Sie das Muster und vervollständigen Sie die Zahlenreihe.</p>
-                    <p class="question-content">2, 6, 12, 20, 30, ?</p>
+                    <p class="instruction">Aufgabenstellung: Erkennen Sie die Muster und vervollständigen Sie alle vier Zahlenreihen.</p>
+                    <p class="hint" style="color: #888; font-size: 0.9em; margin-bottom: 15px;">
+                        💡 Tipp: Suche nach Mustern wie Addition, Multiplikation, Quadratzahlen oder Primzahlen.
+                    </p>
                 </div>
+                
                 <div class="answers">
-                    <input type="number" id="q2-input" class="text-input" placeholder="Ihre Antwort eingeben">
+                    <!-- Zahlenreihe 1 -->
+                    <div style="margin-bottom: 20px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 5px;">
+                        <p style="font-size: 1.1em; margin-bottom: 10px;">
+                            <strong>Reihe 1:</strong> 2, 6, 12, 20, 30, <strong>?</strong>
+                        </p>
+                        <input type="number" id="q2-input-1" class="text-input" placeholder="Antwort 1" style="width: 100%;">
+                    </div>
+                    
+                    <!-- Zahlenreihe 2 -->
+                    <div style="margin-bottom: 20px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 5px;">
+                        <p style="font-size: 1.1em; margin-bottom: 10px;">
+                            <strong>Reihe 2:</strong> 3, 9, 27, 81, <strong>?</strong>
+                        </p>
+                        <input type="number" id="q2-input-2" class="text-input" placeholder="Antwort 2" style="width: 100%;">
+                    </div>
+                    
+                    <!-- Zahlenreihe 3 -->
+                    <div style="margin-bottom: 20px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 5px;">
+                        <p style="font-size: 1.1em; margin-bottom: 10px;">
+                            <strong>Reihe 3:</strong> 1, 1, 2, 3, 5, 8, <strong>?</strong>
+                        </p>
+                        <input type="number" id="q2-input-3" class="text-input" placeholder="Antwort 3" style="width: 100%;">
+                    </div>
+                    
+                    <!-- Zahlenreihe 4 -->
+                    <div style="margin-bottom: 15px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 5px;">
+                        <p style="font-size: 1.1em; margin-bottom: 10px;">
+                            <strong>Reihe 4:</strong> 2, 4, 8, 16, 32, <strong>?</strong>
+                        </p>
+                        <input type="number" id="q2-input-4" class="text-input" placeholder="Antwort 4" style="width: 100%;">
+                    </div>
                 </div>
+                
                 <button class="check-btn" onclick="checkAnswer(2)">Antwort überprüfen</button>
                 <div class="feedback" id="feedback-2"></div>
             </div>
+
 
             <!-- Frage 3: Grundrechenarten / Dreisatz -->
             <div class="question-box" data-question="3">
