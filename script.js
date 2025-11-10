@@ -87,24 +87,48 @@ function checkAnswer(questionNum) {
         feedbackEl.className = 'feedback correct';
         feedbackEl.innerHTML = `✓ Richtig! ${answer.explanation || ''}`;
         quizStats.correct++;
+        quizStats.answered++;
+        
+        // Button deaktivieren bei richtiger Antwort
+        const button = feedbackEl.previousElementSibling;
+        button.disabled = true;
+        button.style.opacity = '0.5';
+        button.style.cursor = 'not-allowed';
+        
     } else {
         feedbackEl.className = 'feedback incorrect';
-        feedbackEl.innerHTML = `✗ Leider falsch. ${answer.explanation || ''}`;
+        feedbackEl.innerHTML = `
+            ✗ Leider falsch. 
+            <button onclick="retryQuestion(${questionNum})" style="margin-left: 10px; padding: 5px 10px; background: #ff6b6b; border: none; border-radius: 3px; color: white; cursor: pointer;">
+                Nochmal versuchen
+            </button>
+        `;
+        // Bei falscher Antwort NICHT als beantwortet zählen
     }
 
-    quizStats.answered++;
-    
-    // Button deaktivieren
-    const button = feedbackEl.previousElementSibling;
-    button.disabled = true;
-    button.style.opacity = '0.5';
-    button.style.cursor = 'not-allowed';
-
-    // Prüfen, ob alle Fragen beantwortet wurden
+    // Prüfen, ob alle Fragen RICHTIG beantwortet wurden
     if (quizStats.answered === quizStats.total) {
         showResults();
     }
 }
+
+// Neue Funktion zum Zurücksetzen einer einzelnen Frage
+function retryQuestion(questionNum) {
+    const feedbackEl = document.getElementById(`feedback-${questionNum}`);
+    feedbackEl.className = 'feedback';
+    feedbackEl.innerHTML = '';
+    
+    // Eingaben zurücksetzen
+    const radioInputs = document.querySelectorAll(`input[name="q${questionNum}"]`);
+    radioInputs.forEach(input => input.checked = false);
+    
+    const textInput = document.getElementById(`q${questionNum}-input`);
+    if (textInput) {
+        textInput.value = '';
+        textInput.focus();
+    }
+}
+
 
 function showResults() {
     const resultsBox = document.getElementById('results');
