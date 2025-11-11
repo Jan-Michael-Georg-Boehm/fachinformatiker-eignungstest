@@ -96,10 +96,36 @@ Was eine Firewall NICHT leistet:
 
 Merksatz: Eine Firewall ist wie ein intelligenter "Türsteher" für dein Netzwerk - sie entscheidet, wer/was rein- und rauskommen darf.` 
     },
-    7: { 
-        type: 'number', 
-        correct: 214, 
-        explanation: '128+64+16+4+2 = 214 (Binär: 11010110)' 
+   7: { 
+    type: 'number', 
+    correct: 214, 
+    explanation: `Lösung: 11010110 = 214 (im Dezimalsystem)
+
+Schritt-für-Schritt-Erklärung:
+Position (von rechts):  7    6    5    4    3    2    1    0
+Binärzahl:              1    1    0    1    0    1    1    0
+Stellenwert:           128   64   32   16    8    4    2    1
+
+Berechnung (nur die 1er-Positionen):
+128 (Position 7: 1) = 128
+ 64 (Position 6: 1) =  64
+ 32 (Position 5: 0) =   0
+ 16 (Position 4: 1) =  16
+  8 (Position 3: 0) =   0
+  4 (Position 2: 1) =   4
+  2 (Position 1: 1) =   2
+  1 (Position 0: 0) =   0
+                      -----
+Summe:                 214
+
+Merksatz: Das Binärsystem ist wie Lichtschalter - 1 = AN, 0 = AUS. 
+Die Position bestimmt, wie "wertvoll" dieser Schalter ist!
+
+Warum das wichtig ist: 
+Alle Speichergrößen basieren auf Binärzahlen:
+- 1 Byte = 8 Bits (können 256 verschiedene Werte darstellen: 0-255)
+- 1 KB ≈ 1.000 Bytes = 1.024 Bytes (2^10)
+- 1 MB ≈ 1.000.000 Bytes = 1.048.576 Bytes (2^20)` 
     },
     8: { 
         type: 'number', 

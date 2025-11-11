@@ -261,7 +261,7 @@
             <div class="question-box" data-question="6">
                 <div class="question-header">
                     <span class="question-number">[Frage 6/16]</span>
-                    <span class="question-type">IT-Sicherheit - Firewall-Funktionen</span>
+                    <span class="question-type">IT-Sicherheit - Firewall-Funktionen - Vorkenntnisse</span>
                 </div>
                 <div class="question-text">
                     <p class="instruction">
@@ -300,20 +300,55 @@
                 <div class="feedback" id="feedback-6"></div>
             </div>
 
-            <!-- Frage 7: Binärsystem -->
+            <!-- Frage 7: Binärsystem - Anfängerfreundlich erklärt -->
             <div class="question-box" data-question="7">
                 <div class="question-header">
-                    <span class="question-number">[Frage 7/15]</span>
-                    <span class="question-type">Mathematik - Binärsystem</span>
+                    <span class="question-number">[Frage 7/16]</span>
+                    <span class="question-type">Logisches Denken - Zahlensysteme</span>
                 </div>
                 <div class="question-text">
-                    <p class="instruction">Aufgabenstellung: Rechnen Sie die Binärzahl in eine Dezimalzahl um.</p>
-                    <p class="question-content">Welche Dezimalzahl entspricht der Binärzahl 11010110?</p>
+                    <p class="instruction">
+                        Aufgabenstellung: Computer arbeiten mit dem Binärsystem (nur 0 und 1). Verstehen Sie das Konzept und lösen Sie die Aufgabe.
+                        <br><em style="color: var(--neon-yellow);">💡 Tipp: Arbeiten Sie von rechts nach links!</em>
+                    </p>
+                    <div style="background: var(--bg-terminal); padding: 15px; border-left: 3px solid var(--neon-purple); margin: 15px 0; border-radius: 4px;">
+                        <p class="question-content" style="color: var(--neon-cyan);">
+                            <strong>Schnellanleitung zum Binärsystem:</strong>
+                        </p>
+                        <p style="font-size: 0.9em; color: var(--text-secondary); white-space: pre-wrap;">
+            Im Dezimalsystem (was wir normalerweise nutzen) zählen wir: 0, 1, 2, 3, 4, 5...
+            Im Binärsystem zählen Computer: 0, 1, 10, 11, 100, 101...
+
+            Umrechnung funktioniert so:
+            - Jede Position hat einen Wert (von rechts nach links: 1, 2, 4, 8, 16, 32, 64, 128...)
+            - Wenn dort eine 1 steht, nimmt man diesen Wert
+            - Wenn dort eine 0 steht, nimmt man diesen Wert nicht
+            - Am Ende addiert man alle Werte zusammen
+
+            Beispiel: 110 im Binärsystem
+            Position:  1   1   0
+            Wert:      4   2   1
+            Rechnung:  4 + 2 + 0 = 6 (im Dezimalsystem)
+                        </p>
+                    </div>
+                    <p class="question-content" style="color: var(--neon-green);">
+                        <strong>Aufgabe:</strong> Konvertieren Sie diese Binärzahl ins Dezimalsystem:<br>
+                        <span style="background: var(--bg-box); padding: 8px 12px; border-radius: 4px; font-family: monospace; font-size: 1.1em; color: var(--neon-yellow);">
+                            11010110
+                        </span>
+                    </p>
+                    <p style="font-size: 0.9em; color: var(--text-muted); margin-top: 10px;">
+                        (Tipp: Schreiben Sie die Werte für jede Position auf und addieren Sie die Werte unter den 1er-Positionen)
+                    </p>
                 </div>
                 <div class="answers">
-                    <input type="number" id="q7-input" class="text-input" placeholder="Dezimalzahl eingeben">
+                    <input type="number" 
+                        id="q7-input" 
+                        class="text-input" 
+                        placeholder="Ihre Antwort als Dezimalzahl (z.B. 42)"
+                        autocomplete="off">
                 </div>
-                <button class="check-btn" onclick="checkAnswer(7)">Antwort überprüfen</button>
+                <button type="button" class="check-btn" onclick="checkAnswer(7)">Antwort überprüfen</button>
                 <div class="feedback" id="feedback-7"></div>
             </div>
 
