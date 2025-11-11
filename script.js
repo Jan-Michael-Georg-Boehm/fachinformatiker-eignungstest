@@ -20,7 +20,7 @@ let hasAnsweredQ100 = false;
 let quizStats = {
     answered: 0,
     correct: 0,
-    total: 16
+    total: 20
 };
 
 
@@ -191,6 +191,70 @@ Subnetz 2: 172.16.64.0 - 172.16.95.255
 Subnetz 3: 172.16.96.0 - 172.16.127.255
 
 Drittes Oktett der Broadcast-Adresse von Subnetz 3: 127` 
+    }, 
+    17: { 
+        type: 'radio', 
+        correct: 'b', 
+        explanation: `SELECT ist der Standard-SQL-Befehl zum Abrufen von Daten:
+
+• SELECT * FROM Tabelle → Wählt alle Spalten aus
+• SELECT spalte1, spalte2 FROM Tabelle → Wählt bestimmte Spalten
+• WHERE-Klausel → Filtert die Ergebnisse
+• ORDER BY → Sortiert die Ergebnisse
+
+Die anderen Befehle (GET, FETCH, RETRIEVE) existieren nicht in SQL.` 
+    },
+    18: { 
+        type: 'text', 
+        correct: ['flash', 'nand', 'nand-flash'], 
+        explanation: `FLASH bzw. NAND-Flash ist der richtige Speichertyp:
+
+• Flash-Speicher (NAND): Nicht-flüchtiger Speicher
+• Behält Daten ohne Stromversorgung
+• Wird in SSDs, USB-Sticks und SD-Karten verwendet
+• Schneller als HDDs, aber langsamer als RAM
+
+Im Gegensatz dazu:
+• RAM (flüchtig) → Verliert Daten beim Ausschalten
+• ROM (Read-Only Memory) → Nur lesbar, nicht beschreibbar` 
+    },
+    19: { 
+        type: 'number', 
+        correct: 400, 
+        explanation: `Berechnung Schritt-für-Schritt:
+
+1. Datenmenge umrechnen:
+   480 GB × 1.000 = 480.000 MB
+
+2. Zeit in Sekunden berechnen:
+   480.000 MB ÷ 20 MB/s = 24.000 Sekunden
+
+3. In Minuten umrechnen:
+   24.000 s ÷ 60 = 400 Minuten
+
+Alternativ: 400 Minuten = 6 Stunden 40 Minuten
+
+Merksatz: Zeit = Datenmenge ÷ Geschwindigkeit` 
+    },
+    20: { 
+        type: 'radio', 
+        correct: 'b', 
+        explanation: `Asymmetrische Verschlüsselung (Public-Key) ist die richtige Wahl:
+
+Funktionsweise:
+• Empfänger hat ein Schlüsselpaar: Public Key (öffentlich) + Private Key (geheim)
+• Sender verschlüsselt mit Public Key des Empfängers
+• NUR der Empfänger kann mit seinem Private Key entschlüsseln
+
+Vorteile:
+✓ Kein gemeinsamer Schlüssel nötig
+✓ Sicherer Schlüsselaustausch über unsichere Kanäle
+✓ Wird in PGP/GPG und S/MIME verwendet
+
+Warum nicht die anderen?
+✗ Symmetrisch: Beide brauchen denselben Schlüssel (schwer sicher zu übertragen)
+✗ Hash: Nur zur Integritätsprüfung, nicht zur Verschlüsselung
+✗ Base64: Nur Kodierung, KEINE Verschlüsselung!` 
     }
 };
 
@@ -201,7 +265,7 @@ Drittes Oktett der Broadcast-Adresse von Subnetz 3: 127`
 
 
 function initializeAttempts() {
-    for (let i = 1; i <= 16; i++) {
+    for (let i = 1; i <= 20; i++) {
         questionAttempts[i] = 0;
     }
     console.log('📊 Versuchszähler initialisiert');
@@ -867,7 +931,7 @@ function displayAllAnswers() {
 
 `;
     
-    for (let i = 1; i <= 16; i++) {
+    for (let i = 1; i <= 20; i++) {  // GEÄNDERT von 16 auf 20
         const ans = answers[i];
         if (!ans) continue;
         
@@ -899,6 +963,7 @@ function displayAllAnswers() {
     
     return output;
 }
+
 
 
 function executeCommand(input) {

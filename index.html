@@ -623,13 +623,128 @@
                 <button class="check-btn" onclick="checkAnswer(16)">Antwort überprüfen</button>
                 <div class="feedback" id="feedback-16"></div>
             </div>
+            
+            <!-- Frage 17: SQL-Grundlagen -->
+            <div class="question-box" data-question="17">
+                <div class="question-header">
+                    <span class="question-number">[Frage 17/20]</span>
+                    <span class="question-type">Datenbanken - SQL-Grundlagen</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Wählen Sie die richtige SQL-Anweisung aus.</p>
+                    <p class="question-content">Mit welchem SQL-Befehl können Sie alle Datensätze aus einer Tabelle namens "Mitarbeiter" abrufen?</p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q17" value="a">
+                        <span class="answer-text">A) GET * FROM Mitarbeiter</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q17" value="b">
+                        <span class="answer-text">B) SELECT * FROM Mitarbeiter</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q17" value="c">
+                        <span class="answer-text">C) FETCH ALL FROM Mitarbeiter</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q17" value="d">
+                        <span class="answer-text">D) RETRIEVE * FROM Mitarbeiter</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(17)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-17"></div>
+            </div>
 
-            <!-- Ergebnisanzeige -->
+            <!-- Frage 18: Hardware-Komponenten -->
+            <div class="question-box" data-question="18">
+                <div class="question-header">
+                    <span class="question-number">[Frage 18/20]</span>
+                    <span class="question-type">Hardware - Komponenten</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Geben Sie die korrekte Abkürzung ein.</p>
+                    <p class="question-content">
+                        Wie lautet die Abkürzung für den Speichertyp, der auch nach dem Ausschalten des Computers seine Daten behält und häufig in SSDs verwendet wird?<br>
+                        <span style="color: #888; font-size: 0.9em;">(Hinweis: 5 Buchstaben, z.B. "XXXXX")</span>
+                    </p>
+                </div>
+                <div class="answers">
+                    <input type="text" id="q18-input" class="text-input" placeholder="Abkürzung eingeben" maxlength="10">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(18)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-18"></div>
+            </div>
+
+            <!-- Frage 19: Logisches Denken - Zeitberechnung -->
+            <div class="question-box" data-question="19">
+                <div class="question-header">
+                    <span class="question-number">[Frage 19/20]</span>
+                    <span class="question-type">Logisches Denken - Zeitberechnung</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Berechnen Sie die benötigte Zeit.</p>
+                    <div style="background: rgba(255,255,255,0.03); padding: 15px; border-left: 3px solid var(--neon-cyan); margin: 15px 0; border-radius: 4px;">
+                        <p class="question-content">
+                            Ein Backup-Server muss 480 GB Daten sichern. Die Übertragungsgeschwindigkeit beträgt konstant 20 MB/s (Megabyte pro Sekunde).<br><br>
+                            <strong>Frage:</strong> Wie viele Minuten dauert der Backup-Vorgang?<br>
+                            <span style="color: #888; font-size: 0.9em;">(Hinweis: 1 GB = 1.000 MB, Antwort als ganze Zahl)</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="answers">
+                    <input type="number" id="q19-input" class="text-input" placeholder="Antwort in Minuten" min="0">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(19)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-19"></div>
+            </div>
+
+            <!-- Frage 20: IT-Sicherheit - Verschlüsselung -->
+            <div class="question-box" data-question="20">
+                <div class="question-header">
+                    <span class="question-number">[Frage 20/20]</span>
+                    <span class="question-type">IT-Sicherheit - Verschlüsselung</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Aufgabenstellung: Wählen Sie die richtige Antwort aus.</p>
+                    <div style="background: var(--bg-terminal); padding: 15px; border-left: 3px solid var(--neon-green); margin: 15px 0; border-radius: 4px;">
+                        <p class="question-content" style="font-style: italic; color: var(--neon-yellow);">
+                            <strong>Szenario:</strong><br>
+                            Ein Unternehmen möchte sicherstellen, dass vertrauliche E-Mails nur vom beabsichtigten Empfänger gelesen werden können. Die Nachrichten sollen während der Übertragung geschützt sein.
+                        </p>
+                    </div>
+                    <p class="question-content" style="color: var(--neon-cyan);">
+                        <strong>Frage:</strong> Welche Verschlüsselungsmethode sollte verwendet werden?
+                    </p>
+                </div>
+                <div class="answers">
+                    <label class="answer-option">
+                        <input type="radio" name="q20" value="a">
+                        <span class="answer-text">A) Symmetrische Verschlüsselung (beide nutzen denselben Schlüssel)</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q20" value="b">
+                        <span class="answer-text">B) Asymmetrische Verschlüsselung (Public-Key-Verfahren)</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q20" value="c">
+                        <span class="answer-text">C) Hash-Algorithmus (MD5 oder SHA-256)</span>
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q20" value="d">
+                        <span class="answer-text">D) Basis64-Kodierung</span>
+                    </label>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(20)">Antwort überprüfen</button>
+                <div class="feedback" id="feedback-20"></div>
+            </div>
+
+                        <!-- Ergebnisanzeige -->
             <div class="results-box" id="results">
-                <div class="results-header">Ergebnisübersicht - Quiz 1-16</div>
+                <div class="results-header">Ergebnisübersicht - Quiz 1-20</div>  <!-- GEÄNDERT -->
                 <div class="results-content" id="results-content"></div>
                 <div class="results-actions">
-                    <button class="nav-btn" onclick="location.href='quiz2.html'">Weiter zu Quiz 16-30 →</button>
+                    <button class="nav-btn" onclick="location.href='quiz2.html'">Weiter zu Quiz 21-40 →</button>  <!-- GEÄNDERT -->
                     <button class="reset-btn" onclick="resetQuiz()">Quiz zurücksetzen</button>
                 </div>
             </div>
