@@ -3,6 +3,10 @@
    Minimalistisch | Darkmode | Neon Rainbow
    =========================== */
 
+/* ===========================
+   RESET & ROOT VARIABLES
+   =========================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -39,6 +43,10 @@
     --shadow-pink: rgba(255, 0, 255, 0.3);
     --shadow-green: rgba(0, 255, 0, 0.3);
 }
+
+/* ===========================
+   BODY & CONTAINER
+   =========================== */
 
 body {
     font-family: 'Courier New', 'Consolas', monospace;
@@ -449,6 +457,256 @@ body {
 }
 
 /* ===========================
+   TERMINAL WINDOW
+   =========================== */
+
+.terminal-window {
+    background: #1e1e1e;
+    border: 2px solid var(--neon-green);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: 'Courier New', monospace;
+}
+
+.terminal-output {
+    max-height: 150px;
+    overflow-y: auto;
+    margin-bottom: 5px;
+    color: var(--neon-green);
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+}
+
+.terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--neon-green);
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    outline: none;
+}
+
+.terminal-input::selection {
+    background: var(--neon-green);
+    color: #000;
+}
+
+/* ===========================
+   PATTERN RECOGNITION (Kreise)
+   =========================== */
+
+.circle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 3px;
+    border: 2px solid var(--neon-green);
+    vertical-align: middle;
+}
+
+.circle.filled {
+    background-color: var(--neon-green);
+}
+
+.circle.empty {
+    background-color: transparent;
+}
+
+/* ===========================
+   PASSWORD STRENGTH (FRAGE 3 & 100)
+   =========================== */
+
+.password-requirements {
+    background-color: var(--bg-terminal);
+    padding: 15px;
+    border: 1px solid var(--neon-pink);
+    margin: 15px 0;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+}
+
+.password-requirements h4 {
+    margin-top: 0;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 5px var(--neon-cyan);
+    margin-bottom: 12px;
+}
+
+.password-criteria-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.password-criteria-list li {
+    padding: 8px 0;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Unerfüllt - Rot/Neon-Red */
+.criterion-unmet {
+    color: var(--neon-red);
+}
+
+.criterion-unmet .criterion-icon {
+    font-weight: bold;
+    color: var(--neon-red);
+    text-shadow: 0 0 5px var(--neon-red);
+}
+
+/* Erfüllt - Grün/Neon-Green */
+.criterion-met {
+    color: var(--neon-green);
+}
+
+.criterion-met .criterion-icon {
+    font-weight: bold;
+    color: var(--neon-green);
+    text-shadow: 0 0 8px var(--neon-green);
+}
+
+.criterion-icon {
+    min-width: 20px;
+    font-size: 16px;
+}
+
+.criterion-text {
+    text-shadow: 0 0 3px currentColor;
+}
+
+/* Toggle Password Button */
+.toggle-password {
+    margin-left: 10px;
+    padding: 8px 15px;
+    cursor: pointer;
+    border: 2px solid var(--neon-cyan);
+    background: var(--bg-terminal);
+    color: var(--neon-cyan);
+    font-family: 'Courier New', monospace;
+    transition: all 0.3s;
+    text-shadow: 0 0 5px var(--neon-cyan);
+}
+
+.toggle-password:hover {
+    background: var(--neon-cyan);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--shadow-cyan);
+    transform: translateY(-2px);
+}
+
+.toggle-password:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: var(--text-muted);
+    color: var(--text-muted);
+}
+
+/* Password Strength Meter */
+.password-strength-meter {
+    width: 100%;
+    height: 20px;
+    background-color: var(--bg-terminal);
+    border: 1px solid var(--text-muted);
+    margin-top: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0%;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px currentColor;
+}
+
+.strength-text {
+    margin-top: 8px;
+    font-weight: bold;
+    color: var(--neon-yellow);
+    text-shadow: 0 0 8px var(--neon-yellow);
+}
+
+#strength-level-3 {
+    font-weight: bold;
+}
+
+.points-display {
+    margin-top: 5px;
+    font-size: 16px;
+    color: var(--neon-purple);
+    text-shadow: 0 0 5px var(--neon-purple);
+}
+
+#points-value-3 {
+    font-weight: bold;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px var(--neon-cyan);
+    font-size: 18px;
+}
+
+/* Password Input Wrapper (Frage 100) */
+.password-input-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.password-input-wrapper input {
+    flex: 1;
+}
+
+/* Hint Text */
+.hint-text {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 0, 0.1);
+    border-left: 4px solid var(--neon-yellow);
+    font-size: 14px;
+    color: var(--neon-yellow);
+    text-shadow: 0 0 5px var(--neon-yellow);
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.1);
+}
+
+/* Attempts Display (Frage 100) */
+.attempts-display {
+    margin-top: 10px;
+    padding: 8px;
+    background-color: var(--bg-terminal);
+    border: 1px solid var(--neon-red);
+    font-weight: bold;
+    color: var(--neon-orange);
+    text-shadow: 0 0 5px var(--neon-orange);
+    box-shadow: 0 0 10px rgba(255, 0, 68, 0.2);
+}
+
+#attempts-count-100 {
+    color: var(--neon-red);
+    font-size: 18px;
+    text-shadow: 0 0 8px var(--neon-red);
+    font-weight: bold;
+}
+
+/* Password Match Hint */
+.password-match-hint {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgba(0, 136, 255, 0.1);
+    border-left: 4px solid var(--neon-blue);
+    font-size: 13px;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 5px var(--neon-cyan);
+    box-shadow: 0 0 10px rgba(0, 136, 255, 0.2);
+}
+
+/* ===========================
    BUTTONS
    =========================== */
 
@@ -495,6 +753,11 @@ body {
     color: var(--bg-dark);
     box-shadow: 0 0 30px var(--shadow-cyan);
     transform: translateY(-2px);
+}
+
+.check-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .nav-btn {
@@ -651,47 +914,6 @@ body {
 }
 
 /* ===========================
-   RESPONSIVE DESIGN
-   =========================== */
-
-@media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-
-    .terminal-title {
-        font-size: 1.1em;
-    }
-
-    .navigation {
-        gap: 5px;
-    }
-
-    .navigation a {
-        padding: 8px 12px;
-        font-size: 0.85em;
-    }
-
-    .question-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .matching-question {
-        grid-template-columns: 1fr;
-    }
-
-    .pattern-display {
-        font-size: 1.2em;
-        letter-spacing: 4px;
-    }
-
-    .results-actions {
-        flex-direction: column;
-    }
-}
-
-/* ===========================
    SCROLLBAR STYLING
    =========================== */
 
@@ -738,266 +960,53 @@ body {
     80% { transform: translate(2px, 2px); }
 }
 
-.terminal-window {
-    background: #1e1e1e;
-    border: 2px solid #0f0;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-family: 'Courier New', monospace;
-}
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
 
-.terminal-output {
-    max-height: 150px;
-    overflow-y: auto;
-    margin-bottom: 5px;
-    color: #0f0;
-}
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
 
-.terminal-input-line {
-    display: flex;
-    align-items: center;
-}
+    .terminal-title {
+        font-size: 1.1em;
+    }
 
-.terminal-input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: #0f0;
-    font-family: 'Courier New', monospace;
-    font-size: 14px;
-    outline: none;
-}
+    .navigation {
+        gap: 5px;
+    }
 
-.terminal-input::selection {
-    background: #0f0;
-    color: #000;
-}
+    .navigation a {
+        padding: 8px 12px;
+        font-size: 0.85em;
+    }
 
-/* Kreise für Mustererkennung */
-.circle {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    margin: 0 3px;
-    border: 2px solid #0f0;
-    vertical-align: middle;
-}
+    .question-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-.circle.filled {
-    background-color: #0f0;
-}
+    .matching-question {
+        grid-template-columns: 1fr;
+    }
 
-.circle.empty {
-    background-color: transparent;
-}
+    .pattern-display {
+        font-size: 1.2em;
+        letter-spacing: 4px;
+    }
 
-.password-requirements {
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 15px 0;
-}
-
-.password-requirements h4 {
-    margin-top: 0;
-    color: #333;
-}
-
-.password-requirements ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.password-requirements li {
-    padding: 5px 0;
-    font-size: 14px;
-    transition: all 0.3s ease;
-}
-
-.password-requirements li.met {
-    color: #28a745;
-}
-
-.password-requirements li.met::before {
-    content: '✓';
-}
-
-.toggle-password {
-    margin-left: 10px;
-    padding: 8px 12px;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    background: #fff;
-    border-radius: 4px;
-}
-
-.password-strength-meter {
-    width: 100%;
-    height: 20px;
-    background-color: #e0e0e0;
-    border-radius: 10px;
-    margin-top: 10px;
-    overflow: hidden;
-}
-
-.strength-bar {
-    height: 100%;
-    width: 0%;
-    transition: all 0.3s ease;
-    border-radius: 10px;
-}
-
-.strength-text {
-    margin-top: 8px;
-    font-weight: bold;
-}
-
-.points-display {
-    margin-top: 5px;
-    font-size: 16px;
-    color: #333;
-}
-
-#points-value-3 {
-    font-weight: bold;
-    color: #007bff;
-}
-
-.password-input-wrapper {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.password-input-wrapper input {
-    flex: 1;
-}
-
-.hint-text {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #fff3cd;
-    border-left: 4px solid #ffc107;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-.attempts-display {
-    margin-top: 10px;
-    padding: 8px;
-    background-color: #f8f9fa;
-    border-radius: 4px;
-    font-weight: bold;
-}
-
-#attempts-count-100 {
-    color: #dc3545;
-    font-size: 18px;
-}
-
-.password-match-hint {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #d1ecf1;
-    border-left: 4px solid #17a2b8;
-    border-radius: 4px;
-    font-size: 13px;
-}
-
-.password-requirements {
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 15px 0;
-}
-
-.password-requirements h4 {
-    margin-top: 0;
-    color: #333;
-}
-
-.password-criteria-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.password-criteria-list li {
-    padding: 8px 0;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* Unerfüllt - Rot */
-.criterion-unmet {
-    color: #dc3545;
-}
-
-.criterion-unmet .criterion-icon {
-    font-weight: bold;
-    color: #dc3545;
-}
-
-/* Erfüllt - Grün */
-.criterion-met {
-    color: #28a745;
-}
-
-.criterion-met .criterion-icon {
-    font-weight: bold;
-    color: #28a745;
-}
-
-.criterion-met .criterion-icon::before {
-    content: '✓';
-}
-
-.criterion-icon {
-    min-width: 20px;
-    font-size: 16px;
-}
-
-.toggle-password {
-    margin-left: 10px;
-    padding: 8px 12px;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    background: #fff;
-    border-radius: 4px;
-}
-
-.password-strength-meter {
-    width: 100%;
-    height: 20px;
-    background-color: #e0e0e0;
-    border-radius: 10px;
-    margin-top: 10px;
-    overflow: hidden;
-}
-
-.strength-bar {
-    height: 100%;
-    width: 0%;
-    transition: all 0.3s ease;
-    border-radius: 10px;
-}
-
-.strength-text {
-    margin-top: 8px;
-    font-weight: bold;
-}
-
-.points-display {
-    margin-top: 5px;
-    font-size: 16px;
-    color: #333;
-}
-
-#points-value-3 {
-    font-weight: bold;
-    color: #007bff;
+    .results-actions {
+        flex-direction: column;
+    }
+    
+    .password-input-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .toggle-password {
+        margin-left: 0;
+        margin-top: 10px;
+    }
 }
