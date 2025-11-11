@@ -60,9 +60,9 @@ Reihe 4: 2^n → 2^6 = 64`
         explanation: 'MAC-Adresse (Media Access Control Address)' 
     },
     5: { 
-        type: 'radio', 
-        correct: 'b', 
-        explanation: 'RAID - Redundant Array of Independent Disks' 
+    type: 'radio', 
+    correct: 'b', 
+    explanation: 'RAID - Redundant Array of Independent Disks = Redundante Anordnung unabhängiger Festplatten. Der Text beschreibt die Kernmerkmale: Datenverteilung über mehrere Speichergeräte (redundant array), Schutz vor Datenverlust (data integrity) und parallele Lesevorgänge (concurrent read operations).' 
     },
     6: { 
         type: 'radio', 

@@ -201,7 +201,7 @@
             <div class="question-box" data-question="4">
                 <div class="question-header">
                     <span class="question-number">[Frage 4/15]</span>
-                    <span class="question-type">Eigenwissen - IT-Terminologie</span>
+                    <span class="question-type">Eigenwissen - IT-Terminologie - Vorkenntnisse</span>
                 </div>
                 <div class="question-text">
                     <p class="instruction">Aufgabenstellung: Geben Sie den korrekten Fachbegriff ein (ein Wort).</p>
@@ -214,40 +214,50 @@
                 <div class="feedback" id="feedback-4"></div>
             </div>
 
-            <!-- Frage 5: Englisch C2 - Technical Reading -->
+            <!-- Frage 5: Englisch-Deutsch Übersetzung & Technical Reading -->
             <div class="question-box" data-question="5">
                 <div class="question-header">
-                    <span class="question-number">[Frage 5/15]</span>
-                    <span class="question-type">Englisch C2 - Technical Comprehension</span>
+                    <span class="question-number">[Frage 5/16]</span>
+                    <span class="question-type">Englisch-Deutsch - Fachübersetzung</span>
                 </div>
                 <div class="question-text">
-                    <p class="instruction">Instruction: Read the technical description and select the most appropriate answer.</p>
-                    <p class="question-content" style="font-style: italic;">
-                        "The implementation of a redundant array architecture significantly enhances data integrity by distributing information across multiple storage devices. This configuration not only mitigates the risk of catastrophic data loss but also facilitates concurrent read operations, thereby optimizing throughput in high-demand environments."
+                    <p class="instruction">
+                        Aufgabenstellung: Lesen Sie den englischen Fachtext und wählen Sie die korrekte deutsche Übersetzung/Interpretation.
+                        <br><em style="color: var(--neon-yellow);">💡 Tipp: Achten Sie auf technische Fachbegriffe und deren Bedeutung!</em>
                     </p>
-                    <p class="question-content">Which storage technology is being described?</p>
+                    <div style="background: var(--bg-terminal); padding: 15px; border-left: 3px solid var(--neon-cyan); margin: 15px 0;">
+                        <p class="question-content" style="font-style: italic; color: var(--neon-cyan);">
+                            <strong>English Technical Text:</strong><br>
+                            "The implementation of a <span style="color: var(--neon-yellow);">redundant array architecture</span> significantly enhances data integrity by distributing information across multiple storage devices. This configuration not only mitigates the risk of catastrophic data loss but also facilitates concurrent read operations, thereby optimizing throughput in high-demand environments."
+                        </p>
+                    </div>
+                    <p class="question-content" style="color: var(--neon-green);">
+                        <strong>Frage:</strong> Welche Speichertechnologie wird hier beschrieben?<br>
+                        <em style="font-size: 0.9em; color: var(--text-muted);">(Hinweis: "redundant array" = redundantes Array/Feld)</em>
+                    </p>
                 </div>
                 <div class="answers">
                     <label class="answer-option">
                         <input type="radio" name="q5" value="a">
-                        <span class="answer-text">A) Network Attached Storage (NAS)</span>
+                        <span class="answer-text">A) Network Attached Storage (NAS) - Netzwerkspeicher</span>
                     </label>
                     <label class="answer-option">
                         <input type="radio" name="q5" value="b" data-correct="true">
-                        <span class="answer-text">B) Redundant Array of Independent Disks (RAID)</span>
+                        <span class="answer-text">B) Redundant Array of Independent Disks (RAID) - Redundante Anordnung unabhängiger Festplatten</span>
                     </label>
                     <label class="answer-option">
                         <input type="radio" name="q5" value="c">
-                        <span class="answer-text">C) Solid State Drive (SSD)</span>
+                        <span class="answer-text">C) Solid State Drive (SSD) - Festkörperlaufwerk</span>
                     </label>
                     <label class="answer-option">
                         <input type="radio" name="q5" value="d">
-                        <span class="answer-text">D) Cloud Object Storage</span>
+                        <span class="answer-text">D) Cloud Object Storage - Cloud-Objektspeicher</span>
                     </label>
                 </div>
-                <button class="check-btn" onclick="checkAnswer(5)">Antwort überprüfen</button>
+                <button type="button" class="check-btn" onclick="checkAnswer(5)">Antwort überprüfen</button>
                 <div class="feedback" id="feedback-5"></div>
             </div>
+
 
             <!-- Frage 6: IT-Sicherheit -->
             <div class="question-box" data-question="6">
