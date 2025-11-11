@@ -214,51 +214,49 @@
                 <div class="feedback" id="feedback-4"></div>
             </div>
 
-            <!-- Frage 5: Englisch-Deutsch Übersetzung & Technical Reading -->
+            <!-- Frage 5: Englisch-Deutsch Übersetzung - Technical & Colloquial -->
             <div class="question-box" data-question="5">
                 <div class="question-header">
                     <span class="question-number">[Frage 5/16]</span>
-                    <span class="question-type">Englisch-Deutsch - Fachübersetzung</span>
+                    <span class="question-type">Englisch-Deutsch - Mixed Language Skills</span>
                 </div>
                 <div class="question-text">
                     <p class="instruction">
-                        Aufgabenstellung: Lesen Sie den englischen Fachtext und wählen Sie die korrekte deutsche Übersetzung/Interpretation.
-                        <br><em style="color: var(--neon-yellow);">💡 Tipp: Achten Sie auf technische Fachbegriffe und deren Bedeutung!</em>
+                        Aufgabenstellung: Ein IT-Administrator schreibt an einen Kunden. Lesen Sie die Nachricht (Mix aus Fachsprache und Umgangssprache) und verstehen Sie den Kontext richtig.
+                        <br><em style="color: var(--neon-yellow);">💡 Tipp: Achten Sie sowohl auf technische Begriffe als auch auf alltägliche Ausdrücke!</em>
                     </p>
-                    <div style="background: var(--bg-terminal); padding: 15px; border-left: 3px solid var(--neon-cyan); margin: 15px 0;">
-                        <p class="question-content" style="font-style: italic; color: var(--neon-cyan);">
-                            <strong>English Technical Text:</strong><br>
-                            "The implementation of a <span style="color: var(--neon-yellow);">redundant array architecture</span> significantly enhances data integrity by distributing information across multiple storage devices. This configuration not only mitigates the risk of catastrophic data loss but also facilitates concurrent read operations, thereby optimizing throughput in high-demand environments."
+                    <div style="background: var(--bg-terminal); padding: 15px; border-left: 3px solid var(--neon-pink); margin: 15px 0; border-radius: 4px;">
+                        <p class="question-content" style="font-style: italic; color: var(--neon-green);">
+                            <strong>Email-Auszug:</strong><br>
+                            "Hey there! We've implemented a redundant array setup to beef up your data protection game. Basically, we're mirroring your stuff across multiple drives so if one disk goes belly-up, you won't lose a thing. This redundancy thing is gonna cost you a bit more, but honestly, it's a no-brainer if you don't wanna lose mission-critical data. We're also gonna optimize your I/O throughput, which means your read and write operations will be way faster. Bottom line: Your system is now rock solid."
                         </p>
                     </div>
-                    <p class="question-content" style="color: var(--neon-green);">
-                        <strong>Frage:</strong> Welche Speichertechnologie wird hier beschrieben?<br>
-                        <em style="font-size: 0.9em; color: var(--text-muted);">(Hinweis: "redundant array" = redundantes Array/Feld)</em>
+                    <p class="question-content" style="color: var(--neon-cyan);">
+                        <strong>Frage:</strong> Was wird dem Kunden hier im Wesentlichen angeboten und empfohlen?
                     </p>
                 </div>
                 <div class="answers">
                     <label class="answer-option">
                         <input type="radio" name="q5" value="a">
-                        <span class="answer-text">A) Network Attached Storage (NAS) - Netzwerkspeicher</span>
+                        <span class="answer-text">A) Ein Cloud-Backup-System, das regelmäßig Daten in die Cloud hochlädt</span>
                     </label>
                     <label class="answer-option">
                         <input type="radio" name="q5" value="b" data-correct="true">
-                        <span class="answer-text">B) Redundant Array of Independent Disks (RAID) - Redundante Anordnung unabhängiger Festplatten</span>
+                        <span class="answer-text">B) Ein RAID-System zur Redundanz und Spiegelung der Daten, um Datenverlust zu vermeiden und die Geschwindigkeit zu erhöhen</span>
                     </label>
                     <label class="answer-option">
                         <input type="radio" name="q5" value="c">
-                        <span class="answer-text">C) Solid State Drive (SSD) - Festkörperlaufwerk</span>
+                        <span class="answer-text">C) Ein neues Verschlüsselungssystem für bessere Sicherheit und Zugriffskontrolle</span>
                     </label>
                     <label class="answer-option">
                         <input type="radio" name="q5" value="d">
-                        <span class="answer-text">D) Cloud Object Storage - Cloud-Objektspeicher</span>
+                        <span class="answer-text">D) Eine Archivierungslösung, um alte Daten auszulagern und Speicherplatz zu sparen</span>
                     </label>
                 </div>
                 <button type="button" class="check-btn" onclick="checkAnswer(5)">Antwort überprüfen</button>
                 <div class="feedback" id="feedback-5"></div>
             </div>
-
-
+            
             <!-- Frage 6: IT-Sicherheit -->
             <div class="question-box" data-question="6">
                 <div class="question-header">

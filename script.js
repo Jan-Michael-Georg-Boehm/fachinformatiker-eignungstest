@@ -62,7 +62,20 @@ Reihe 4: 2^n → 2^6 = 64`
     5: { 
     type: 'radio', 
     correct: 'b', 
-    explanation: 'RAID - Redundant Array of Independent Disks = Redundante Anordnung unabhängiger Festplatten. Der Text beschreibt die Kernmerkmale: Datenverteilung über mehrere Speichergeräte (redundant array), Schutz vor Datenverlust (data integrity) und parallele Lesevorgänge (concurrent read operations).' 
+    explanation: `Technische Fachbegriffe erkannt:
+• "redundant array setup" = RAID-System
+• "mirroring your stuff" = Datenspiegelung
+• "I/O throughput" = Ein-/Ausgabedurchsatz (Geschwindigkeit)
+• "mission-critical data" = kritische Geschäftsdaten
+
+Umgangssprachliche Ausdrücke verstanden:
+• "beef up" = verbessern/verstärken
+• "goes belly-up" = kaputtgehen/ausfallen
+• "rock solid" = sehr stabil/zuverlässig
+• "no-brainer" = eine Entscheidung, die sich von selbst versteht
+• "way faster" = viel schneller
+
+Die Email beschreibt die Implementierung eines RAID-Systems mit redundanter Datenspeicherung und optimiertem Durchsatz.` 
     },
     6: { 
         type: 'radio', 
