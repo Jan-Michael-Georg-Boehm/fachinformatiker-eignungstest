@@ -256,36 +256,47 @@
                 <button type="button" class="check-btn" onclick="checkAnswer(5)">Antwort überprüfen</button>
                 <div class="feedback" id="feedback-5"></div>
             </div>
-            
-            <!-- Frage 6: IT-Sicherheit -->
+
+            <!-- Frage 6: IT-Sicherheit - Firewall Zweck & Funktionalität -->
             <div class="question-box" data-question="6">
                 <div class="question-header">
-                    <span class="question-number">[Frage 6/15]</span>
-                    <span class="question-type">Multiple Choice - IT-Sicherheit</span>
+                    <span class="question-number">[Frage 6/16]</span>
+                    <span class="question-type">IT-Sicherheit - Firewall-Funktionen</span>
                 </div>
                 <div class="question-text">
-                    <p class="instruction">Aufgabenstellung: Wählen Sie die korrekte Antwort aus.</p>
-                    <p class="question-content">Welche Aussage zu Firewall-Typen ist korrekt?</p>
+                    <p class="instruction">
+                        Aufgabenstellung: Ein Unternehmen möchte sein Netzwerk schützen und bittet Sie um Rat. Lesen Sie das Szenario und wählen Sie die richtige Aussage darüber aus, was eine Firewall leistet.
+                        <br><em style="color: var(--neon-yellow);">💡 Tipp: Denken Sie an die praktischen Anwendungsfälle einer Firewall!</em>
+                    </p>
+                    <div style="background: var(--bg-terminal); padding: 15px; border-left: 3px solid var(--neon-orange); margin: 15px 0; border-radius: 4px;">
+                        <p class="question-content" style="font-style: italic; color: var(--neon-cyan);">
+                            <strong>Szenario:</strong><br>
+                            Das Unternehmen hat vertrauliche Daten und möchte verhindern, dass unerlaubte externe Zugriffe auf interne Server erfolgen. Gleichzeitig soll überprüft werden, welche Daten das Unternehmen verlassen und in welche externen Systeme verbunden werden darf.
+                        </p>
+                    </div>
+                    <p class="question-content" style="color: var(--neon-green);">
+                        <strong>Frage:</strong> Welche Aussage beschreibt am besten, wofür eine Firewall in diesem Fall eingesetzt wird?
+                    </p>
                 </div>
                 <div class="answers">
                     <label class="answer-option">
                         <input type="radio" name="q6" value="a">
-                        <span class="answer-text">A) Eine Paketfilter-Firewall analysiert den Inhalt von Datenpaketen</span>
+                        <span class="answer-text">A) Eine Firewall verschlüsselt alle Daten automatisch und macht sie unleserlich für Hacker</span>
                     </label>
                     <label class="answer-option">
                         <input type="radio" name="q6" value="b" data-correct="true">
-                        <span class="answer-text">B) Eine Stateful Inspection Firewall überwacht den Verbindungsstatus und merkt sich bestehende Verbindungen</span>
+                        <span class="answer-text">B) Eine Firewall filtert den Netzwerkverkehr und kontrolliert, welche Verbindungen zwischen dem internen Netzwerk und der Außenwelt erlaubt oder blockiert werden</span>
                     </label>
                     <label class="answer-option">
                         <input type="radio" name="q6" value="c">
-                        <span class="answer-text">C) Personal Firewalls schützen ausschließlich Unternehmensnetzwerke</span>
+                        <span class="answer-text">C) Eine Firewall löscht automatisch verdächtige Dateien, bevor sie in das Netzwerk gelangen</span>
                     </label>
                     <label class="answer-option">
                         <input type="radio" name="q6" value="d">
-                        <span class="answer-text">D) Firewalls können Viren in E-Mails automatisch entfernen</span>
+                        <span class="answer-text">D) Eine Firewall überwacht nur eingehende Verbindungen und kann ausgehende Daten nicht kontrollieren</span>
                     </label>
                 </div>
-                <button class="check-btn" onclick="checkAnswer(6)">Antwort überprüfen</button>
+                <button type="button" class="check-btn" onclick="checkAnswer(6)">Antwort überprüfen</button>
                 <div class="feedback" id="feedback-6"></div>
             </div>
 

@@ -78,9 +78,23 @@ Umgangssprachliche Ausdrücke verstanden:
 Die Email beschreibt die Implementierung eines RAID-Systems mit redundanter Datenspeicherung und optimiertem Durchsatz.` 
     },
     6: { 
-        type: 'radio', 
-        correct: 'b', 
-        explanation: 'Stateful Inspection Firewalls überwachen Verbindungsstatus' 
+    type: 'radio', 
+    correct: 'b', 
+    explanation: `Firewall-Zweck & -Funktionen richtig verstanden:
+
+Eine Firewall wird eingesetzt, um:
+✓ Netzwerkverkehr zu filtern und zu kontrollieren
+✓ Unerlaubte externe Zugriffe auf interne Systeme zu blockieren
+✓ Outbound-Traffic (ausgehende Daten) zu überwachen und zu regulieren
+✓ Sicherheitsrichtlinien durchzusetzen (welche Verbindungen erlaubt/blockiert sind)
+✓ Das Netzwerk vor unautorisierten Zugriffen zu schützen
+
+Was eine Firewall NICHT leistet:
+✗ Daten verschlüsseln (dafür gibt es VPN/SSL/TLS)
+✗ Viren und Malware automatisch löschen (dafür gibt es Antivirus-Programme)
+✗ Den gesamten Datenschutz gewährleisten (ist nur eine Komponente)
+
+Merksatz: Eine Firewall ist wie ein intelligenter "Türsteher" für dein Netzwerk - sie entscheidet, wer/was rein- und rauskommen darf.` 
     },
     7: { 
         type: 'number', 
