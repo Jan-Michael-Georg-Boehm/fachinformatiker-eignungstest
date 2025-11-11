@@ -409,177 +409,117 @@ const answeredQuestions = new Set();
 function checkAnswer(questionNum) {
     console.log('🔍 Checking answer for question:', questionNum);
     
-    // NEUE LOGIK: Frage bereits beantwortet?
-    if (answeredQuestions.has(questionNum)) {
-        const feedbackEl = document.getElementById(`feedback-${questionNum}`);
-        feedbackEl.className = 'feedback incorrect';
-        feedbackEl.innerHTML = '❌ Diese Frage wurde bereits beantwortet. Keine weiteren Versuche möglich!';
-        return;
-    }
-    
     const feedbackEl = document.getElementById(`feedback-${questionNum}`);
     let isCorrect = false;
     let userAnswer = null;
 
-    // ... Rest des bestehenden Codes ...
+    // Initialisiere Versuche für diese Frage
+    if (!questionAttempts[questionNum]) {
+        questionAttempts[questionNum] = 0;
+    }
 
-    // Wichtig: ALLE Antworten (richtig oder falsch) sperren sofort die Frage
-    answeredQuestions.add(questionNum);
+    // SPEZIELLE FRAGEN ZUERST
+    if (questionNum === 3) {
+        return checkPasswordCreation(feedbackEl, questionNum);
+    }
+
+    if (questionNum === 100) {
+        return checkPasswordQuestion();
+    }
+
+    // NORMALE FRAGEN
+    const answer = answers[questionNum];
     
-    // Button SOFORT deaktivieren - egal ob richtig oder falsch
-    const button = feedbackEl.previousElementSibling;
-    if (button) {
-        button.disabled = true;
-        button.style.opacity = '0.5';
-        button.style.cursor = 'not-allowed';
+    if (!answer) {
+        console.error('❌ Keine Antwort für Frage', questionNum);
+        return;
     }
     
-    // ALLE Input-Felder für diese Frage deaktivieren
-    const inputs = document.querySelectorAll(`[id^="q${questionNum}-"]`);
-    inputs.forEach(input => {
-        if (input.type !== 'hidden') {
-            input.disabled = true;
-        }
-    });
+    // Prüfe ob maximale Versuche erreicht
+    if (questionAttempts[questionNum] >= MAX_ATTEMPTS) {
+        feedbackEl.className = 'feedback incorrect';
+        feedbackEl.innerHTML = `❌ Maximale Versuche (${MAX_ATTEMPTS}) erreicht!<br>
+            <em>Diese Frage wird mit 0 Punkten bewertet.</em>`;
+        displayAttemptInfo(questionNum, feedbackEl);
+        
+        // Deaktiviere alle Inputs
+        deactivateQuestion(questionNum);
+        return;
+    }
     
+    switch(answer.type) {
+        case 'multiple-text':
+            isCorrect = handleMultipleText(questionNum, answer, feedbackEl);
+            break;
+            
+        case 'multiple-number':
+            isCorrect = handleMultipleNumber(questionNum, answer, feedbackEl);
+            break;
+            
+        case 'radio':
+            isCorrect = handleRadio(questionNum, answer, feedbackEl);
+            break;
+            
+        case 'number':
+            isCorrect = handleNumber(questionNum, answer, feedbackEl);
+            break;
+            
+        case 'text':
+            isCorrect = handleText(questionNum, answer, feedbackEl);
+            break;
+    }
+
+    // Erhöhe Versuchszähler
+    questionAttempts[questionNum]++;
+
     // Nur bei richtigen Antworten weitermachen
     if (isCorrect) {
         quizStats.correct++;
         quizStats.answered++;
         
         feedbackEl.className = 'feedback correct';
-        // ... Feedback ...
+        displayAttemptInfo(questionNum, feedbackEl);
         
-        if (quizStats.answered === quizStats.total) {
-            showResults();
-        }
-    } else {
-        // Bei falscher Antwort: Auch als "beantwortet" markieren
-        quizStats.answered++;
+        // Button deaktivieren
+        deactivateQuestion(questionNum);
         
-        feedbackEl.className = 'feedback incorrect';
-        // ... Feedback ...
-        
-        if (quizStats.answered === quizStats.total) {
-            showResults();
-        }
-    }
-}
-
-function checkPasswordQuestion() {
-    console.log('🔐 Checking password recall (Question 100)...'); // DEBUG
-    
-    const feedbackEl = document.getElementById('feedback-100');
-    
-    if (hasAnsweredQ100) {
-        feedbackEl.className = 'feedback incorrect';
-        feedbackEl.innerHTML = '❌ Sie haben diese Frage bereits beantwortet.';
-        return;
-    }
-    
-    // Versuche BEIDE Storage-Optionen
-    let savedPassword = sessionStorage.getItem('savedPassword');
-    
-    if (!savedPassword) {
-        savedPassword = localStorage.getItem('savedPassword');
-        console.log('ℹ️ sessionStorage leer, verwende localStorage'); // DEBUG
-    }
-    
-    console.log('Gespeichertes Passwort:', savedPassword ? '***' : 'NICHT GEFUNDEN'); // DEBUG (nicht Passwort selbst loggen!)
-    
-    const userInput = document.getElementById('q100-password-input');
-    if (!userInput) {
-        console.error('❌ Input-Element nicht gefunden!');
-        return;
-    }
-    
-    const inputValue = userInput.value;
-    console.log('Eingegeben:', inputValue ? '***' : 'LEER'); // DEBUG
-    
-    if (!savedPassword) {
-        feedbackEl.className = 'feedback incorrect';
-        feedbackEl.innerHTML = `
-            ❌ Fehler: Kein Passwort aus Frage 3 gefunden.<br>
-            <small>Bitte beantworten Sie zuerst Frage 3.</small>
-        `;
-        return;
-    }
-    
-    // Passwort-Vergleich (case-sensitive!)
-    if (inputValue === savedPassword) {
-        hasAnsweredQ100 = true;
-        feedbackEl.className = 'feedback correct';
-        feedbackEl.innerHTML = `
-            🎉 Perfekt! Sie haben sich Ihr Passwort korrekt gemerkt!<br>
-            <strong>+100 Bonuspunkte für Merkfähigkeit!</strong>
-        `;
-        
-        quizStats.correct++;
-        quizStats.answered++;
-        
-        // Input und Button deaktivieren
-        userInput.disabled = true;
-        const toggleBtn = document.querySelector('[data-target="q100-password-input"]');
-        if (toggleBtn) toggleBtn.disabled = true;
-        
-        const button = feedbackEl.previousElementSibling;
-        if (button) {
-            button.disabled = true;
-            button.style.opacity = '0.5';
-            button.style.cursor = 'not-allowed';
-        }
+        console.log(`✅ Frage ${questionNum} richtig! (Versuch ${questionAttempts[questionNum]}/${MAX_ATTEMPTS})`);
         
         // Prüfen, ob alle Fragen beantwortet wurden
         if (quizStats.answered === quizStats.total) {
             showResults();
         }
-        
     } else {
-        passwordAttempts100--;
-        const attemptsEl = document.getElementById('attempts-count-100');
-        if (attemptsEl) attemptsEl.textContent = passwordAttempts100;
+        // Bei falscher Antwort
+        const remaining = getRemainingAttempts(questionNum);
         
-        if (passwordAttempts100 > 0) {
-            let hint = '';
-            if (passwordAttempts100 === 2) {
-                hint = `<div class="password-match-hint">
-                    💡 Hinweis: Ihr Passwort hatte ${savedPassword.length} Zeichen.
-                </div>`;
-            } else if (passwordAttempts100 === 1) {
-                const firstChar = savedPassword.charAt(0);
-                const lastChar = savedPassword.charAt(savedPassword.length - 1);
-                hint = `<div class="password-match-hint">
-                    💡 Hinweis: Ihr Passwort begann mit "${firstChar}" und endete mit "${lastChar}".
-                </div>`;
+        if (remaining > 0) {
+            // Noch Versuche übrig
+            feedbackEl.className = 'feedback incorrect';
+            let hintText = feedbackEl.innerHTML || '';
+            
+            if (remaining === 2) {
+                hintText += `<br><br><em style="color: var(--neon-yellow);">💡 Hinweis: Du hast noch ${remaining} Versuche. Versuche es nochmal!</em>`;
+            } else if (remaining === 1) {
+                hintText += `<br><br><em style="color: var(--neon-orange);">⚠️ Warnung: Das ist dein letzter Versuch! Die korrekte Antwort ist: ${getCorrectAnswerForQuestion(questionNum)}</em>`;
             }
             
-            feedbackEl.className = 'feedback incorrect';
-            feedbackEl.innerHTML = `
-                ❌ Falsches Passwort! Sie haben noch ${passwordAttempts100} Versuch(e).
-                ${hint}
-            `;
+            feedbackEl.innerHTML = hintText;
+            displayAttemptInfo(questionNum, feedbackEl);
+            
+            console.log(`❌ Frage ${questionNum} falsch. ${remaining} Versuch(e) übrig.`);
         } else {
-            hasAnsweredQ100 = true;
+            // Keine Versuche mehr
             feedbackEl.className = 'feedback incorrect';
-            feedbackEl.innerHTML = `
-                ❌ Leider falsch! Sie haben keine Versuche mehr übrig.<br>
-                <strong>Ihr korrektes Passwort war: </strong><code>${savedPassword}</code><br>
-                <em>0 Punkte für diese Aufgabe.</em>
-            `;
+            feedbackEl.innerHTML = `❌ Leider falsch!<br>
+                <strong>Korrekte Antwort:</strong> ${getCorrectAnswerForQuestion(questionNum)}<br>
+                <em style="color: var(--neon-red);">Maximale Versuche (${MAX_ATTEMPTS}) erreicht!</em>`;
+            displayAttemptInfo(questionNum, feedbackEl);
             
             quizStats.answered++;
+            deactivateQuestion(questionNum);
             
-            // Input und Button deaktivieren
-            userInput.disabled = true;
-            const toggleBtn = document.querySelector('[data-target="q100-password-input"]');
-            if (toggleBtn) toggleBtn.disabled = true;
-            
-            const button = feedbackEl.previousElementSibling;
-            if (button) {
-                button.disabled = true;
-                button.style.opacity = '0.5';
-                button.style.cursor = 'not-allowed';
-            }
+            console.log(`❌ Frage ${questionNum} nicht bestanden. Maximale Versuche erreicht.`);
             
             // Prüfen, ob alle Fragen beantwortet wurden
             if (quizStats.answered === quizStats.total) {
@@ -587,6 +527,95 @@ function checkPasswordQuestion() {
             }
         }
     }
+}
+
+// Hilfsfunktion: Deaktiviere alle Inputs einer Frage
+function deactivateQuestion(questionNum) {
+    // Button deaktivieren
+    const buttons = document.querySelectorAll(`[onclick*="checkAnswer(${questionNum})"]`);
+    buttons.forEach(button => {
+        button.disabled = true;
+        button.style.opacity = '0.5';
+        button.style.cursor = 'not-allowed';
+    });
+    
+    // Alle Input-Felder deaktivieren
+    const inputs = document.querySelectorAll(`[id^="q${questionNum}-"]`);
+    inputs.forEach(input => {
+        if (input.type !== 'hidden') {
+            input.disabled = true;
+        }
+    });
+    
+    // Radio-Buttons deaktivieren
+    const radios = document.querySelectorAll(`input[name="q${questionNum}"]`);
+    radios.forEach(radio => radio.disabled = true);
+}
+
+// Hilfsfunktion: Gebe die korrekte Antwort aus
+function getCorrectAnswerForQuestion(questionNum) {
+    const answer = answers[questionNum];
+    
+    if (!answer) return 'Unbekannt';
+    
+    if (answer.type === 'multiple-text') {
+        return answer.correct.map((arr, i) => `${i + 1}: ${arr[0]}`).join(' | ');
+    } else if (answer.type === 'multiple-number') {
+        return answer.correct.join(' | ');
+    } else if (Array.isArray(answer.correct)) {
+        return answer.correct[0];
+    } else {
+        return answer.correct;
+    }
+}
+
+// Modifiziere checkPasswordCreation
+function checkPasswordCreation(feedbackEl, questionNum) {
+    console.log('🔐 Checking password creation...');
+    
+    // Initialisiere Versuche
+    if (!questionAttempts[questionNum]) {
+        questionAttempts[questionNum] = 0;
+    }
+    
+    if (!userPassword3 || userPassword3.length < 8) {
+        questionAttempts[questionNum]++;
+        feedbackEl.className = 'feedback incorrect';
+        feedbackEl.innerHTML = '❌ Bitte geben Sie ein Passwort mit mindestens 8 Zeichen ein.';
+        displayAttemptInfo(questionNum, feedbackEl);
+        return false;
+    }
+    
+    // Passwort speichern
+    try {
+        sessionStorage.setItem('savedPassword', userPassword3);
+        localStorage.setItem('savedPassword', userPassword3);
+        localStorage.setItem('passwordTimestamp', Date.now());
+    } catch (e) {
+        console.error('❌ Speicherfehler:', e);
+        feedbackEl.className = 'feedback incorrect';
+        feedbackEl.innerHTML = '❌ Fehler beim Speichern: ' + e.message;
+        return false;
+    }
+    
+    questionAttempts[questionNum]++;
+    feedbackEl.className = 'feedback correct';
+    feedbackEl.innerHTML = `
+        ✅ Passwort gespeichert! Sie haben <strong>${passwordScore3} von 100</strong> möglichen Punkten erreicht.<br>
+        <em>Merken Sie sich Ihr Passwort gut - Sie werden es in Frage 100 nochmal benötigen!</em>
+    `;
+    displayAttemptInfo(questionNum, feedbackEl);
+    
+    quizStats.correct++;
+    quizStats.answered++;
+    
+    deactivateQuestion(questionNum);
+    
+    if (quizStats.answered === quizStats.total) {
+        showResults();
+    }
+    
+    return true;
 }
 
 /* ===========================
@@ -836,6 +865,47 @@ function resetQuiz() {
     document.getElementById('results').classList.remove('show');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+/* ===========================
+   VERSUCHSZÄHLER-SYSTEM
+   =========================== */
+
+// Globale Variablen für Versuchszählung
+const questionAttempts = {};
+const MAX_ATTEMPTS = 3;
+
+// Initialisiere Versuche für alle Fragen
+function initializeAttempts() {
+    for (let i = 1; i <= 16; i++) {
+        questionAttempts[i] = 0;
+    }
+    console.log('📊 Versuchszähler initialisiert');
+}
+
+// Gebe Versuche für eine Frage aus
+function getRemainingAttempts(questionNum) {
+    return MAX_ATTEMPTS - (questionAttempts[questionNum] || 0);
+}
+
+// Hilfsfunktion: Versuche anzeigen
+function displayAttemptInfo(questionNum, feedbackEl) {
+    const remaining = getRemainingAttempts(questionNum);
+    const attempted = questionAttempts[questionNum] || 0;
+    
+    let attemptText = `<div style="margin-top: 10px; padding: 8px; background: var(--bg-terminal); border-left: 3px solid var(--neon-orange); border-radius: 4px;">
+        📊 Versuche: ${attempted}/${MAX_ATTEMPTS}`;
+    
+    if (remaining > 0) {
+        attemptText += ` | ⏳ Noch ${remaining} Versuch(e) übrig`;
+    } else {
+        attemptText += ` | ❌ Keine Versuche mehr!`;
+    }
+    
+    attemptText += `</div>`;
+    
+    feedbackEl.innerHTML += attemptText;
+}
+
 
 /* ===========================
    TERMINAL-FUNKTIONEN
@@ -1090,6 +1160,16 @@ window.addEventListener('load', () => {
         welcomeLine.style.marginBottom = '10px';
         terminalOutput.appendChild(welcomeLine);
     }
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 FISI Eignungstest geladen - Viel Erfolg!');
+    
+    // Starten Sie das Versuchszähler-System
+    initializeAttempts();
+    
+    // ... Rest des bestehenden Codes ...
 });
 
 console.log('✅ Script.js vollständig geladen');
