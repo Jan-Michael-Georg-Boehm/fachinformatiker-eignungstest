@@ -411,7 +411,6 @@ function checkAnswer(questionNum) {
     
     const feedbackEl = document.getElementById(`feedback-${questionNum}`);
     let isCorrect = false;
-    let userAnswer = null;
 
     // Initialisiere Versuche für diese Frage
     if (!questionAttempts[questionNum]) {
@@ -601,7 +600,6 @@ function checkPasswordCreation(feedbackEl, questionNum) {
     feedbackEl.className = 'feedback correct';
     feedbackEl.innerHTML = `
         ✅ Passwort gespeichert! Sie haben <strong>${passwordScore3} von 100</strong> möglichen Punkten erreicht.<br>
-        <em>Merken Sie sich Ihr Passwort gut - Sie werden es in Frage 100 nochmal benötigen!</em>
     `;
     displayAttemptInfo(questionNum, feedbackEl);
     
