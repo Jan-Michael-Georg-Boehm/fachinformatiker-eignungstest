@@ -4,45 +4,93 @@
 
 // EINHEITLICHES Antwort-System
 const answers = {
-     1: { 
+    1: { 
         type: 'multiple-text', 
         correct: [
             ['netzwerk', 'netz', 'netzwerke'],           // Antwort 1
             ['ordner', 'verzeichnis', 'datenbank'],      // Antwort 2
             ['daten', 'signal', 'signale', 'strom']      // Antwort 3 
-        ], explanation: `1. Haus → Garten (umgibt) | Computer → Netzwerk (verbindet) 2. Buch → Bibliothek (Sammlung) | Datei → Ordner/Verzeichnis (Sammlung) 3. Straße → Auto (Transport) | Kabel → Daten/Signal (Transport)` 
+        ], 
+        explanation: `1. Haus → Garten (umgibt) | Computer → Netzwerk (verbindet) 2. Buch → Bibliothek (Sammlung) | Datei → Ordner/Verzeichnis (Sammlung) 3. Straße → Auto (Transport) | Kabel → Daten/Signal (Transport)` 
     },
     2: { 
         type: 'multiple-number', 
         correct: [42, 243, 13, 64],
         explanation: `Reihe 1: n×(n+1) → 6×7 = 42 Reihe 2: ×3 → 81×3 = 243 Reihe 3: Fibonacci → 5+8 = 13 Reihe 4: 2^n → 2^6 = 64` 
-    },    
-    3: { type: 'number', correct: 3600, explanation: '450 Anfragen / 15 Min = 30 Anfragen/Min → 120 Min × 30 = 3600 Anfragen' },
-    4: { type: 'text', correct: ['mac', 'mac-adresse', 'macadresse', 'mac adresse'], explanation: 'MAC-Adresse (Media Access Control Address)' },
-    5: { type: 'radio', correct: 'b', explanation: 'RAID - Redundant Array of Independent Disks' },
-    6: { type: 'radio', correct: 'b', explanation: 'Stateful Inspection Firewalls überwachen Verbindungsstatus' },
-    7: { type: 'number', correct: 214, explanation: '128+64+16+4+2 = 214 (Binär: 11010110)' },
-    8: { type: 'number', correct: 18000, explanation: '15% von 120.000€ = 18.000€' },
-    9: { type: 'radio', correct: 'b', explanation: '192.168.x.x ist privater Adressbereich nach RFC 1918' },
-    10: { type: 'radio', correct: 'b', explanation: 'Logische Schlussfolgerung: Wenn alle Server redundant sind → Server A ist redundant' },
-    11: { type: 'radio', correct: 'b', explanation: 'Standard (mit d, nicht t)' },
-    12: { type: 'radio', correct: 'b', explanation: 'Operating System (nicht Operation System)' },
+    },
+    3: {
+        type: 'password',
+        // Wird speziell in checkAnswer(questionNum === 3) behandelt
+        // Score basiert auf passwordScore3 Variable
+        explanation: 'Passwort-Sicherheit wird anhand von 7 Kriterien bewertet'
+    },
+    4: { 
+        type: 'text', 
+        correct: ['mac', 'mac-adresse', 'macadresse', 'mac adresse'], 
+        explanation: 'MAC-Adresse (Media Access Control Address)' 
+    },
+    5: { 
+        type: 'radio', 
+        correct: 'b', 
+        explanation: 'RAID - Redundant Array of Independent Disks' 
+    },
+    6: { 
+        type: 'radio', 
+        correct: 'b', 
+        explanation: 'Stateful Inspection Firewalls überwachen Verbindungsstatus' 
+    },
+    7: { 
+        type: 'number', 
+        correct: 214, 
+        explanation: '128+64+16+4+2 = 214 (Binär: 11010110)' 
+    },
+    8: { 
+        type: 'number', 
+        correct: 18000, 
+        explanation: '15% von 120.000€ = 18.000€' 
+    },
+    9: { 
+        type: 'radio', 
+        correct: 'b', 
+        explanation: '192.168.x.x ist privater Adressbereich nach RFC 1918' 
+    },
+    10: { 
+        type: 'radio', 
+        correct: 'b', 
+        explanation: 'Logische Schlussfolgerung: Wenn alle Server redundant sind → Server A ist redundant' 
+    },
+    11: { 
+        type: 'radio', 
+        correct: 'b', 
+        explanation: 'Standard (mit d, nicht t)' 
+    },
+    12: { 
+        type: 'radio', 
+        correct: 'b', 
+        explanation: 'Operating System (nicht Operation System)' 
+    },
     13: { 
         type: 'radio', 
         correct: 'b', 
         explanation: 'Muster: Die gefüllten Kreise (●) rotieren von links nach rechts und verschwinden dann. Nächster Schritt: Alle Kreise sind leer (○ ○ ○).' 
     },
-    14: { type: 'number', correct: 1024, explanation: '1 GB = 1024 MB' },
-    15: { type: 'radio', correct: 'c', explanation: 'HTTPS (HTTP Secure) für sichere Webseiten-Übertragung' },
+    14: { 
+        type: 'number', 
+        correct: 1024, 
+        explanation: '1 GB = 1024 MB' 
+    },
+    15: { 
+        type: 'radio', 
+        correct: 'c', 
+        explanation: 'HTTPS (HTTP Secure) für sichere Webseiten-Übertragung' 
+    },
     16: { 
         type: 'number', 
         correct: 95, 
-        explanation: `Lösung: Für 8 Subnetze → 3 Bits → /19 (255.255.224.0)
-Schrittweite: 256 - 224 = 32
-Subnetz 3: 172.16.64.0 - 172.16.95.255
-Drittes Oktett der Broadcast-Adresse: 95` 
+        explanation: `Lösung: Für 8 Subnetze → 3 Bits → /19 (255.255.224.0) Schrittweite: 256 - 224 = 32 Subnetz 3: 172.16.64.0 - 172.16.95.255 Drittes Oktett der Broadcast-Adresse: 95` 
     }
 };
+
 
 // Quiz-Statistiken
 // Quiz-Statistiken
