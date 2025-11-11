@@ -512,7 +512,6 @@ function checkAnswer(questionNum) {
             // Keine Versuche mehr
             feedbackEl.className = 'feedback incorrect';
             feedbackEl.innerHTML = `❌ Leider falsch!<br>
-                <strong>Korrekte Antwort:</strong> ${getCorrectAnswerForQuestion(questionNum)}<br>
                 <em style="color: var(--neon-red);">Maximale Versuche (${MAX_ATTEMPTS}) erreicht!</em>`;
             displayAttemptInfo(questionNum, feedbackEl);
             
