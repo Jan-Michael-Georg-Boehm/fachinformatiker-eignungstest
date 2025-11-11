@@ -501,7 +501,7 @@ function checkAnswer(questionNum) {
             if (remaining === 2) {
                 hintText += `<br><br><em style="color: var(--neon-yellow);">💡 Hinweis: Du hast noch ${remaining} Versuche. Versuche es nochmal!</em>`;
             } else if (remaining === 1) {
-                hintText += `<br><br><em style="color: var(--neon-orange);">⚠️ Warnung: Das ist dein letzter Versuch! Die korrekte Antwort ist: ${getCorrectAnswerForQuestion(questionNum)}</em>`;
+                hintText += `<br><br><em style="color: var(--neon-orange);">⚠️ Warnung: Das ist dein letzter Versuch!</em>`;
             }
             
             feedbackEl.innerHTML = hintText;
