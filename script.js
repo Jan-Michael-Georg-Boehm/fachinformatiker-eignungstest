@@ -795,7 +795,6 @@ function handleText(questionNum, answer, feedbackEl) {
         feedbackEl.className = 'feedback correct';
         feedbackEl.innerHTML = `✓ Richtig! ${answer.explanation || ''}`;
     } else {
-        feedbackEl.className = 'feedback incorrect';
         feedbackEl.innerHTML = `✗ Leider falsch. Versuche es nochmal oder nutze 'sudo answer' im Terminal. 😉`;
     }
     
