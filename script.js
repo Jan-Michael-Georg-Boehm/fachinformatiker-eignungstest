@@ -876,3 +876,88 @@ function checkPasswordQuestion() {
         }
     }
 }
+
+function validatePasswordStrength(password) {
+    let score = 0;
+    
+    // Kriterien testen
+    const criteria = {
+        length: password.length >= 12,
+        uppercase: /[A-Z]/.test(password),
+        lowercase: /[a-z]/.test(password),
+        numbers: /[0-9]/.test(password),
+        special: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password),
+        noCommon: !/(password|123456|qwerty|admin|letmein|welcome)/i.test(password),
+        noSequential: !/(012|123|234|345|456|567|678|789|abc|bcd|cde|def)/i.test(password)
+    };
+    
+    // Visuelle Updates für jedes Kriterium
+    updateCriterion('criterion-length', criteria.length);
+    updateCriterion('criterion-uppercase', criteria.uppercase);
+    updateCriterion('criterion-lowercase', criteria.lowercase);
+    updateCriterion('criterion-numbers', criteria.numbers);
+    updateCriterion('criterion-special', criteria.special);
+    updateCriterion('criterion-no-common', criteria.noCommon);
+    updateCriterion('criterion-no-sequential', criteria.noSequential);
+    
+    // Punkteberechnung
+    if (criteria.length) score += 20;
+    if (criteria.uppercase) score += 10;
+    if (criteria.lowercase) score += 10;
+    if (criteria.numbers) score += 15;
+    if (criteria.special) score += 20;
+    if (criteria.noCommon) score += 15;
+    if (criteria.noSequential) score += 10;
+    
+    // Bonus für extra Länge
+    if (password.length >= 16) score += 10;
+    if (password.length >= 20) score += 10;
+    
+    // Score begrenzen auf 100
+    score = Math.min(score, 100);
+    passwordScore3 = score;
+    
+    // Visuelle Anzeige aktualisieren
+    const strengthBar = document.getElementById('strength-bar-3');
+    const strengthLevel = document.getElementById('strength-level-3');
+    const pointsValue = document.getElementById('points-value-3');
+    
+    strengthBar.style.width = score + '%';
+    pointsValue.textContent = score;
+    
+    if (score < 40) {
+        strengthBar.style.backgroundColor = '#dc3545';
+        strengthLevel.textContent = 'Schwach';
+        strengthLevel.style.color = '#dc3545';
+    } else if (score < 70) {
+        strengthBar.style.backgroundColor = '#ffc107';
+        strengthLevel.textContent = 'Mittel';
+        strengthLevel.style.color = '#ffc107';
+    } else if (score < 90) {
+        strengthBar.style.backgroundColor = '#17a2b8';
+        strengthLevel.textContent = 'Gut';
+        strengthLevel.style.color = '#17a2b8';
+    } else {
+        strengthBar.style.backgroundColor = '#28a745';
+        strengthLevel.textContent = 'Sehr stark';
+        strengthLevel.style.color = '#28a745';
+    }
+    
+    userPassword3 = password;
+}
+
+// Hilfsfunktion zum Aktualisieren einzelner Kriterien
+function updateCriterion(criterionId, isMet) {
+    const element = document.getElementById(criterionId);
+    const icon = element.querySelector('.criterion-icon');
+    
+    if (isMet) {
+        element.classList.remove('criterion-unmet');
+        element.classList.add('criterion-met');
+        icon.textContent = '✓';
+    } else {
+        element.classList.remove('criterion-met');
+        element.classList.add('criterion-unmet');
+        icon.textContent = '✗';
+    }
+}

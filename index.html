@@ -135,14 +135,35 @@
                     
                     <div class="password-requirements">
                         <h4>Kriterien für ein sicheres Passwort:</h4>
-                        <ul>
-                            <li id="criterion-length">✗ Mindestens 12 Zeichen lang</li>
-                            <li id="criterion-uppercase">✗ Enthält Großbuchstaben (A-Z)</li>
-                            <li id="criterion-lowercase">✗ Enthält Kleinbuchstaben (a-z)</li>
-                            <li id="criterion-numbers">✗ Enthält Zahlen (0-9)</li>
-                            <li id="criterion-special">✗ Enthält Sonderzeichen (!@#$%^&*)</li>
-                            <li id="criterion-no-common">✗ Keine gängigen Wörter oder Muster</li>
-                            <li id="criterion-no-sequential">✗ Keine einfachen Zahlenfolgen (123, abc)</li>
+                        <ul class="password-criteria-list">
+                            <li id="criterion-length" class="criterion-unmet">
+                                <span class="criterion-icon">✗</span>
+                                <span class="criterion-text">Mindestens 12 Zeichen lang</span>
+                            </li>
+                            <li id="criterion-uppercase" class="criterion-unmet">
+                                <span class="criterion-icon">✗</span>
+                                <span class="criterion-text">Enthält Großbuchstaben (A-Z)</span>
+                            </li>
+                            <li id="criterion-lowercase" class="criterion-unmet">
+                                <span class="criterion-icon">✗</span>
+                                <span class="criterion-text">Enthält Kleinbuchstaben (a-z)</span>
+                            </li>
+                            <li id="criterion-numbers" class="criterion-unmet">
+                                <span class="criterion-icon">✗</span>
+                                <span class="criterion-text">Enthält Zahlen (0-9)</span>
+                            </li>
+                            <li id="criterion-special" class="criterion-unmet">
+                                <span class="criterion-icon">✗</span>
+                                <span class="criterion-text">Enthält Sonderzeichen (!@#$%^&*)</span>
+                            </li>
+                            <li id="criterion-no-common" class="criterion-unmet">
+                                <span class="criterion-icon">✗</span>
+                                <span class="criterion-text">Keine gängigen Wörter oder Muster</span>
+                            </li>
+                            <li id="criterion-no-sequential" class="criterion-unmet">
+                                <span class="criterion-icon">✗</span>
+                                <span class="criterion-text">Keine einfachen Zahlenfolgen (123, abc)</span>
+                            </li>
                         </ul>
                     </div>
                     
@@ -155,8 +176,7 @@
                         placeholder="Ihr sicheres Passwort" 
                         oninput="validatePasswordStrength(this.value)">
                     
-                    <!-- HIER: Button OHNE onclick -->
-                    <button type="button" class="toggle-password">
+                    <button type="button" class="toggle-password" data-target="q3-password-input">
                         👁️ Anzeigen
                     </button>
                     
