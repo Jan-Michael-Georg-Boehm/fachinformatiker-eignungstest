@@ -1,6 +1,6 @@
 /* ===========================
    FISI Eignungstest - Script
-   Version: 2.1
+   Version: 2.2 - FIXED
    =========================== */
 
 
@@ -431,6 +431,9 @@ function checkAnswer(questionNum) {
                 <em style="color: var(--neon-red);">Maximale Versuche (${MAX_ATTEMPTS}) erreicht!</em>`;
             displayAttemptInfo(questionNum, feedbackEl);
             
+            // NUR JETZT die Lösung anzeigen
+            showCorrectAnswer(questionNum, feedbackEl);
+            
             quizStats.answered++;
             deactivateQuestion(questionNum);
             
@@ -441,6 +444,49 @@ function checkAnswer(questionNum) {
             }
         }
     }
+}
+
+
+function showCorrectAnswer(questionNum, feedbackEl) {
+    const answer = answers[questionNum];
+    if (!answer) return;
+    
+    let correctAnswerText = '';
+    
+    if (answer.type === 'multiple-text') {
+        correctAnswerText = `<br><br><div style="background: rgba(255,0,0,0.1); padding: 10px; border-left: 3px solid var(--neon-red); border-radius: 4px; margin-top: 10px;">
+            <strong>📋 Korrekte Antworten:</strong><br>
+            1. ${answer.correct[0][0]}<br>
+            2. ${answer.correct[1][0]}<br>
+            3. ${answer.correct[2][0]}
+        </div>`;
+    } else if (answer.type === 'multiple-number') {
+        correctAnswerText = `<br><br><div style="background: rgba(255,0,0,0.1); padding: 10px; border-left: 3px solid var(--neon-red); border-radius: 4px; margin-top: 10px;">
+            <strong>📋 Korrekte Antworten:</strong><br>
+            1. ${answer.correct[0]}<br>
+            2. ${answer.correct[1]}<br>
+            3. ${answer.correct[2]}<br>
+            4. ${answer.correct[3]}
+        </div>`;
+    } else if (answer.type === 'radio') {
+        correctAnswerText = `<br><br><div style="background: rgba(255,0,0,0.1); padding: 10px; border-left: 3px solid var(--neon-red); border-radius: 4px; margin-top: 10px;">
+            <strong>📋 Korrekte Antwort:</strong> Option ${answer.correct.toUpperCase()}
+        </div>`;
+    } else if (answer.type === 'number' || answer.type === 'text') {
+        const correctValue = Array.isArray(answer.correct) ? answer.correct[0] : answer.correct;
+        correctAnswerText = `<br><br><div style="background: rgba(255,0,0,0.1); padding: 10px; border-left: 3px solid var(--neon-red); border-radius: 4px; margin-top: 10px;">
+            <strong>📋 Korrekte Antwort:</strong> ${correctValue}
+        </div>`;
+    }
+    
+    // Erklärung hinzufügen
+    if (answer.explanation) {
+        correctAnswerText += `<div style="color: #aaa; font-size: 0.9em; white-space: pre-line; margin-top: 10px; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 4px;">
+            💡 <strong>Erklärung:</strong><br>${answer.explanation}
+        </div>`;
+    }
+    
+    feedbackEl.innerHTML += correctAnswerText;
 }
 
 
@@ -543,7 +589,7 @@ function handleMultipleText(questionNum, answer, feedbackEl) {
             textCorrectCount++;
             textResults.push(`✓ Analogie ${index + 1}: Richtig`);
         } else {
-            textResults.push(`✗ Analogie ${index + 1}: Falsch (Korrekt: ${correctAnswers[0]})`);
+            textResults.push(`✗ Analogie ${index + 1}: Falsch`);
         }
     });
     
@@ -590,7 +636,7 @@ function handleMultipleNumber(questionNum, answer, feedbackEl) {
             numberCorrectCount++;
             numberResults.push(`✓ Reihe ${index + 1}: Richtig`);
         } else {
-            numberResults.push(`✗ Reihe ${index + 1}: Falsch (Korrekt: ${correctAnswer})`);
+            numberResults.push(`✗ Reihe ${index + 1}: Falsch`);
         }
     });
     
@@ -647,7 +693,7 @@ function handleNumber(questionNum, answer, feedbackEl) {
         feedbackEl.innerHTML = `✓ Richtig!<br>
             <span style="color: #aaa; font-size: 0.9em; white-space: pre-line; margin-top: 10px; display: block;">💡 Erklärung:<br>${answer.explanation || ''}</span>`;
     } else {
-        feedbackEl.innerHTML = `✗ Leider falsch. Die korrekte Antwort ist: <strong>${answer.correct}</strong>`;
+        feedbackEl.innerHTML = `✗ Leider falsch.`;
     }
     
     return isCorrect;
@@ -671,7 +717,7 @@ function handleText(questionNum, answer, feedbackEl) {
         feedbackEl.innerHTML = `✓ Richtig!<br>
             <span style="color: #aaa; font-size: 0.9em; margin-top: 10px; display: block;">💡 Erklärung: ${answer.explanation || ''}</span>`;
     } else {
-        feedbackEl.innerHTML = `✗ Leider falsch. Die korrekte Antwort ist: <strong>${answer.correct[0]}</strong>`;
+        feedbackEl.innerHTML = `✗ Leider falsch.`;
     }
     
     return isCorrect;
