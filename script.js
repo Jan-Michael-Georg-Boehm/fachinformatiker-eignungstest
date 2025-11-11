@@ -325,7 +325,6 @@ function checkAnswer(questionNum) {
     }
 
     // Nur bei richtigen Antworten weitermachen
-    // Nur bei richtigen Antworten weitermachen
     if (isCorrect) {
         quizStats.correct++;
         quizStats.answered++;
@@ -402,6 +401,69 @@ function checkPasswordCreation(feedbackEl) {
     }
     
     return true;
+}
+
+// Globale Variable zum Verhindern mehrerer Versuche
+const answeredQuestions = new Set();
+
+function checkAnswer(questionNum) {
+    console.log('🔍 Checking answer for question:', questionNum);
+    
+    // NEUE LOGIK: Frage bereits beantwortet?
+    if (answeredQuestions.has(questionNum)) {
+        const feedbackEl = document.getElementById(`feedback-${questionNum}`);
+        feedbackEl.className = 'feedback incorrect';
+        feedbackEl.innerHTML = '❌ Diese Frage wurde bereits beantwortet. Keine weiteren Versuche möglich!';
+        return;
+    }
+    
+    const feedbackEl = document.getElementById(`feedback-${questionNum}`);
+    let isCorrect = false;
+    let userAnswer = null;
+
+    // ... Rest des bestehenden Codes ...
+
+    // Wichtig: ALLE Antworten (richtig oder falsch) sperren sofort die Frage
+    answeredQuestions.add(questionNum);
+    
+    // Button SOFORT deaktivieren - egal ob richtig oder falsch
+    const button = feedbackEl.previousElementSibling;
+    if (button) {
+        button.disabled = true;
+        button.style.opacity = '0.5';
+        button.style.cursor = 'not-allowed';
+    }
+    
+    // ALLE Input-Felder für diese Frage deaktivieren
+    const inputs = document.querySelectorAll(`[id^="q${questionNum}-"]`);
+    inputs.forEach(input => {
+        if (input.type !== 'hidden') {
+            input.disabled = true;
+        }
+    });
+    
+    // Nur bei richtigen Antworten weitermachen
+    if (isCorrect) {
+        quizStats.correct++;
+        quizStats.answered++;
+        
+        feedbackEl.className = 'feedback correct';
+        // ... Feedback ...
+        
+        if (quizStats.answered === quizStats.total) {
+            showResults();
+        }
+    } else {
+        // Bei falscher Antwort: Auch als "beantwortet" markieren
+        quizStats.answered++;
+        
+        feedbackEl.className = 'feedback incorrect';
+        // ... Feedback ...
+        
+        if (quizStats.answered === quizStats.total) {
+            showResults();
+        }
+    }
 }
 
 function checkPasswordQuestion() {
@@ -653,21 +715,35 @@ function handleRadio(questionNum, answer, feedbackEl) {
 }
 
 function handleNumber(questionNum, answer, feedbackEl) {
+    // Prüfe ob Frage bereits beantwortet wurde
+    if (answeredQuestions.has(questionNum)) {
+        feedbackEl.className = 'feedback incorrect';
+        feedbackEl.innerHTML = '❌ Diese Frage wurde bereits beantwortet. Keine weiteren Versuche möglich!';
+        return false;
+    }
+    
     const numberInput = document.getElementById(`q${questionNum}-input`);
     if (!numberInput || !numberInput.value) {
         alert('Bitte geben Sie eine Antwort ein.');
         return false;
     }
     
+    // MARKIERE FRAGE ALS BEANTWORTET - BEVOR WIR PRÜFEN
+    answeredQuestions.add(questionNum);
+    
     const userAnswer = parseFloat(numberInput.value);
     const isCorrect = (userAnswer === answer.correct);
+    
+    // DEAKTIVIERE SOFORT - VOR FEEDBACK
+    numberInput.disabled = true;
     
     if (isCorrect) {
         feedbackEl.className = 'feedback correct';
         feedbackEl.innerHTML = `✓ Richtig! ${answer.explanation || ''}`;
     } else {
         feedbackEl.className = 'feedback incorrect';
-        feedbackEl.innerHTML = `✗ Leider falsch. Versuche es nochmal oder nutze 'sudo answer' im Terminal. 😉`;
+        feedbackEl.innerHTML = `✗ Leider falsch. Die richtige Antwort ist: ${answer.correct}<br>
+            <span style="color: var(--neon-yellow); font-size: 0.9em;">${answer.explanation}</span>`;
     }
     
     return isCorrect;

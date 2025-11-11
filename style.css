@@ -1010,3 +1010,41 @@ body {
         margin-top: 10px;
     }
 }
+
+/* Deaktivierte Input-Felder */
+.text-input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--bg-terminal);
+    border-color: var(--text-muted);
+    color: var(--text-muted);
+}
+
+.text-input:disabled::placeholder {
+    color: var(--text-muted);
+}
+
+/* Deaktivierte Buttons */
+.check-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: var(--text-muted);
+    color: var(--text-muted);
+}
+
+.check-btn:disabled:hover {
+    background-color: var(--bg-terminal);
+    box-shadow: none;
+}
+
+/* Toggle-Button deaktiviert */
+.toggle-password:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: var(--text-muted);
+    color: var(--text-muted);
+}
+
+.toggle-password:disabled:hover {
+    background-color: var(--bg-terminal);
+}
