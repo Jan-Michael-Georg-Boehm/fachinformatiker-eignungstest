@@ -321,7 +321,6 @@ function checkPasswordCreation(feedbackEl) {
     feedbackEl.className = 'feedback correct';
     feedbackEl.innerHTML = `
         ✅ Passwort gespeichert! Sie haben <strong>${passwordScore3} von 100</strong> möglichen Punkten erreicht.<br>
-        <em>Merken Sie sich Ihr Passwort gut - Sie werden es in Frage 100 nochmal benötigen!</em>
     `;
     
     quizStats.correct++;
