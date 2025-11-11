@@ -127,7 +127,7 @@
             <!-- Frage 3: Passwort-Sicherheit -->
             <div class="question-box" data-question="3">
                 <div class="question-header">
-                    <span class="question-number">[Frage 3/15]</span>
+                    <span class="question-number">[Frage 3/16]</span>
                     <span class="question-type">IT-Sicherheit - Passwort erstellen</span>
                 </div>
                 <div class="question-text">
@@ -166,15 +166,15 @@
                             </li>
                         </ul>
                     </div>
-                    
-                    <p class="question-content" style="margin-top: 15px;">
-                        <strong>Wichtig:</strong> Merken Sie sich Ihr Passwort gut - Sie werden es später nochmal benötigen!
-                    </p>
                 </div>
                 <div class="answers">
-                    <input type="password" id="q3-password-input" class="text-input" 
+                    <input type="password" 
+                        id="q3-password-input" 
+                        class="text-input" 
                         placeholder="Ihr sicheres Passwort" 
-                        oninput="validatePasswordStrength(this.value)">
+                        oninput="validatePasswordStrength(this.value)"
+                        autocomplete="new-password"
+                        data-form-type="other">
                     
                     <button type="button" class="toggle-password" data-target="q3-password-input">
                         👁️ Anzeigen
@@ -183,10 +183,16 @@
                     <div class="password-strength-meter">
                         <div class="strength-bar" id="strength-bar-3"></div>
                     </div>
-                    <div class="strength-text" id="strength-text-3">Passwort-Stärke: <span id="strength-level-3">-</span></div>
-                    <div class="points-display" id="points-display-3">Mögliche Punkte: <span id="points-value-3">0</span>/100</div>
+                    <div class="strength-text" id="strength-text-3">
+                        Passwort-Stärke: <span id="strength-level-3">-</span>
+                    </div>
+                    <div class="points-display" id="points-display-3">
+                        Mögliche Punkte: <span id="points-value-3">0</span>/100
+                    </div>
                 </div>
-                <button class="check-btn" onclick="checkAnswer(3)">Passwort speichern & weiter</button>
+                <button type="button" class="check-btn" onclick="checkAnswer(3)">
+                    Passwort speichern & weiter
+                </button>
                 <div class="feedback" id="feedback-3"></div>
             </div>
 
