@@ -1166,7 +1166,7 @@ window.addEventListener('load', () => {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 FISI Eignungstest geladen - Viel Erfolg!');
     
-    // Starten Sie das Versuchszähler-System
+    // Starten Sie das Versuchszähler-System            
     initializeAttempts();
     
     // ... Rest des bestehenden Codes ...
