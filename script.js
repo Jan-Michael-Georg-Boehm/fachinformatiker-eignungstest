@@ -325,6 +325,7 @@ function checkAnswer(questionNum) {
     }
 
     // Nur bei richtigen Antworten weitermachen
+    // Nur bei richtigen Antworten weitermachen
     if (isCorrect) {
         quizStats.correct++;
         quizStats.answered++;
@@ -337,11 +338,16 @@ function checkAnswer(questionNum) {
             button.style.cursor = 'not-allowed';
         }
         
+        // Input deaktivieren bei richtiger Antwort
+        const input = document.getElementById(`q${questionNum}-input`);
+        if (input) input.disabled = true;
+        
         // Prüfen, ob alle Fragen beantwortet wurden
         if (quizStats.answered === quizStats.total) {
             showResults();
         }
     }
+    // Bei falscher Antwort: NICHTS deaktivieren, sodass weitere Versuche möglich sind
 }
 
 function checkPasswordCreation(feedbackEl) {
