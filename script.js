@@ -771,7 +771,7 @@ function handleNumber(questionNum, answer, feedbackEl) {
         feedbackEl.innerHTML = `✓ Richtig! ${answer.explanation || ''}`;
     } else {
         feedbackEl.className = 'feedback incorrect';
-        feedbackEl.innerHTML = `✗ Leider falsch. Die richtige Antwort ist: ${answer.correct}<br>
+        feedbackEl.innerHTML = `✗ Leider falsch.<br>
             <span style="color: var(--neon-yellow); font-size: 0.9em;">${answer.explanation}</span>`;
     }
     
