@@ -148,6 +148,35 @@
                 <div class="feedback" id="feedback-25"></div>
             </div>
 
+            <!-- Frage 100: Passwort-Erinnerung -->
+            <div class="question-box" data-question="100">
+                <div class="question-header">
+                    <span class="question-number">[Frage 100/100]</span>
+                    <span class="question-type">Merkfähigkeit - Passwort-Erinnerung</span>
+                </div>
+                <div class="question-text">
+                    <p class="instruction">Sie erinnern sich noch an Frage 3? Dort haben Sie ein sicheres Passwort erstellt.</p>
+                    <p class="question-content">
+                        <strong>Geben Sie nun Ihr selbst erstelltes Passwort aus Frage 3 erneut ein!</strong>
+                    </p>
+                    <p class="hint-text">💡 Tipp: Achten Sie auf Groß-/Kleinschreibung und Sonderzeichen!</p>
+                </div>
+                <div class="answers">
+                    <div class="password-input-wrapper">
+                        <input type="password" id="q100-password-input" class="text-input" 
+                            placeholder="Ihr Passwort aus Frage 3">
+                        <button type="button" class="toggle-password" data-target="q100-password-input">
+                            👁️ Anzeigen
+                        </button>
+                    </div>
+                    <div class="attempts-display" id="attempts-100">
+                        Verbleibende Versuche: <span id="attempts-count-100">3</span>
+                    </div>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(100)">Passwort überprüfen</button>
+                <div class="feedback" id="feedback-100"></div>
+            </div>
+
             <!-- Ergebnisanzeige -->
             <div class="results-box" id="results">
                 <div class="results-header">🎉 Finale Ergebnisübersicht - Quiz 21-25 🎉</div>

@@ -124,23 +124,52 @@
                 <div class="feedback" id="feedback-2"></div>
             </div>
 
-
-            <!-- Frage 3: Grundrechenarten / Dreisatz -->
+            <!-- Frage 3: Passwort-Sicherheit -->
             <div class="question-box" data-question="3">
                 <div class="question-header">
                     <span class="question-number">[Frage 3/15]</span>
-                    <span class="question-type">Mathematik - Dreisatz</span>
+                    <span class="question-type">IT-Sicherheit - Passwort erstellen</span>
                 </div>
                 <div class="question-text">
-                    <p class="instruction">Aufgabenstellung: Berechnen Sie mithilfe des Dreisatzes die gesuchte Größe.</p>
-                    <p class="question-content">Ein Server verarbeitet 450 Anfragen in 15 Minuten. Wie viele Anfragen kann er in 2 Stunden verarbeiten?</p>
+                    <p class="instruction">Aufgabenstellung: Erstellen Sie ein sicheres Passwort, das möglichst viele Sicherheitskriterien erfüllt.</p>
+                    
+                    <div class="password-requirements">
+                        <h4>Kriterien für ein sicheres Passwort:</h4>
+                        <ul>
+                            <li id="criterion-length">✗ Mindestens 12 Zeichen lang</li>
+                            <li id="criterion-uppercase">✗ Enthält Großbuchstaben (A-Z)</li>
+                            <li id="criterion-lowercase">✗ Enthält Kleinbuchstaben (a-z)</li>
+                            <li id="criterion-numbers">✗ Enthält Zahlen (0-9)</li>
+                            <li id="criterion-special">✗ Enthält Sonderzeichen (!@#$%^&*)</li>
+                            <li id="criterion-no-common">✗ Keine gängigen Wörter oder Muster</li>
+                            <li id="criterion-no-sequential">✗ Keine einfachen Zahlenfolgen (123, abc)</li>
+                        </ul>
+                    </div>
+                    
+                    <p class="question-content" style="margin-top: 15px;">
+                        <strong>Wichtig:</strong> Merken Sie sich Ihr Passwort gut - Sie werden es später nochmal benötigen!
+                    </p>
                 </div>
                 <div class="answers">
-                    <input type="number" id="q3-input" class="text-input" placeholder="Anzahl der Anfragen">
+                    <input type="password" id="q3-password-input" class="text-input" 
+                        placeholder="Ihr sicheres Passwort" 
+                        oninput="validatePasswordStrength(this.value)">
+                    
+                    <!-- HIER: Button OHNE onclick -->
+                    <button type="button" class="toggle-password">
+                        👁️ Anzeigen
+                    </button>
+                    
+                    <div class="password-strength-meter">
+                        <div class="strength-bar" id="strength-bar-3"></div>
+                    </div>
+                    <div class="strength-text" id="strength-text-3">Passwort-Stärke: <span id="strength-level-3">-</span></div>
+                    <div class="points-display" id="points-display-3">Mögliche Punkte: <span id="points-value-3">0</span>/100</div>
                 </div>
-                <button class="check-btn" onclick="checkAnswer(3)">Antwort überprüfen</button>
+                <button class="check-btn" onclick="checkAnswer(3)">Passwort speichern & weiter</button>
                 <div class="feedback" id="feedback-3"></div>
             </div>
+
 
             <!-- Frage 4: Eigenwissen - Fachbegriff -->
             <div class="question-box" data-question="4">
